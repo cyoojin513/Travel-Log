@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 function UserPage() {
   return (
     <div>
-      <NavBar />
+      User Page
     </div>
   )
 }

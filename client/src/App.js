@@ -4,6 +4,7 @@ import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
 import NewFilm from "./Components/NewFilm";
+import NavBar from "./Components/NavBar";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div>
+      <NavBar currentUser={currentUser} updateUser={updateUser}/>
       <Switch>
         <Route path='/user/:id'>
           <UserPage />

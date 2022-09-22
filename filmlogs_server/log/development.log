@@ -367,3 +367,51 @@ Processing by SessionsController#create as */*
 Completed 200 OK in 156ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1452)
 
 
+Started POST "/login" for 127.0.0.1 at 2022-09-22 11:51:27 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 200 OK in 175ms (Views: 5.3ms | ActiveRecord: 0.6ms | Allocations: 36144)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2022-09-22 11:54:10 -0400
+Processing by SessionsController#destroy as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 204 No Content in 1ms (ActiveRecord: 0.1ms | Allocations: 625)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-22 11:55:09 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.11ms)
+Completed 200 OK in 156ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1292)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2022-09-22 11:59:31 -0400
+Processing by SessionsController#destroy as */*
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 204 No Content in 7ms (ActiveRecord: 1.8ms | Allocations: 611)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-22 11:59:37 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 159ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1293)
+
+

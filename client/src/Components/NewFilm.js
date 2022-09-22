@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 function NewFilm() {
   return (
     <div>
-      <NavBar />
+      NewFilm
     </div>
   )
 }

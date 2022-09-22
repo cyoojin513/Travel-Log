@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 
-function NavBar() {
+function NavBar({ currentUser, updateUser }) {
 
   const history = useHistory()
 
@@ -9,14 +9,15 @@ function NavBar() {
     fetch('/logout', {
         method: 'DELETE'
     })
+    updateUser("")
     history.push('/')
   }
 
   return (
     <div>
-       <NavLink exact to = "/user/:id">My Page</NavLink>
-       <NavLink exact to = "/newfilm">New Film</NavLink>
-       <a href="#" onClick={handleLogOut}>Sign Out</a>
+       {currentUser ? <NavLink exact to = {`/user/${currentUser.id}`}>My Page</NavLink> : null}
+       {currentUser ? <NavLink exact to = "/newfilm">New Film</NavLink> : null}
+       {currentUser ? <a href="#" onClick={handleLogOut}>Sign Out</a> : null}
     </div>
   )
 }
