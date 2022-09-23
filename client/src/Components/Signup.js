@@ -4,16 +4,16 @@ import { MainContainer } from '../Styles/Login.style'
 
 function Signup({updateUser}) {
 
-  const [formData, setFormData] = useState({
+  const [ formData, setFormData ] = useState({
     name:'',
     email:'',
     password:''
   })
 
-  const [errors, setErrors] = useState([])
+  const [ errors, setErrors ] = useState([])
   const history = useHistory()
 
-  const {name, email, password} = formData
+  const { name, email, password } = formData
 
   function onSubmit(e){
     e.preventDefault()
@@ -76,7 +76,7 @@ function Signup({updateUser}) {
               />
               <input type='submit' value='Sign up' />
             </form>
-            {errors? errors.map(error => <div> {error[0]} {error[1]} </div>) :null}
+            {errors? <div>{errors.map(error => <div>{error[0]+': '+ error[1]}</div>)}</div>:null}
           </div>
         </div>
       </MainContainer>

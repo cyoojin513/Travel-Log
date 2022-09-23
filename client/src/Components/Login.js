@@ -6,12 +6,12 @@ function Login({updateUser}) {
 
   const history = useHistory()
 
-  const [formData, setFormData] = useState({
+  const [ formData, setFormData ] = useState({
       email:'',
       password:''
   })
-  const [errors, setErrors] = useState([])
-  const {email, password} = formData
+  const [ errors, setErrors ] = useState([])
+  const { email, password } = formData
 
   function onSubmit(e){
     e.preventDefault()
@@ -32,7 +32,7 @@ function Login({updateUser}) {
           history.push(`/user/${user.id}`)
         })
       }else {
-        res.json().then(json => setErrors(json.errors))
+        res.json().then(json => setErrors(Object.entries(json.error)))
       }
     })
   }
@@ -64,7 +64,7 @@ function Login({updateUser}) {
             />
             <input type='submit' value='Login'/>
           </form>
-          {errors? <div>{errors}</div>:null}
+          {errors? <div>{errors.map(error => error[1])}</div>:null}
           <Link to={'/signup'} >Sign up</Link>
           </div>
         </div>

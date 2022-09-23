@@ -5,6 +5,7 @@ class CreateSlideshows < ActiveRecord::Migration[7.0]
       t.string :country
       t.string :date
       t.text :note
+      t.boolean :isReleased
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps

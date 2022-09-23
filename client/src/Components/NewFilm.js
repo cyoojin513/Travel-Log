@@ -2,22 +2,22 @@ import { AppContext } from 'App'
 import React from 'react'
 import { useContext, useState } from 'react'
 
-function NewFilm({currentUser}) {
-  const [slideInfo, setSlideInfo] = useState({
+function NewFilm({currentUser, updateSlideshows}) {
+  const [ slideInfo, setSlideInfo ] = useState({
     city:'',
     country:'',
     date:'',
     note:''
   })
-  const {city, country, date, note} = slideInfo
+  const { city, country, date, note } = slideInfo
 
-  const [errors, setErrors] = useState([])
+  const [ errors, setErrors ] = useState([])
   // const [image, setimage] = useContext(AppContext)
 
 
   function handleSubmit(e) {
     e.preventDefault()
-    const slideshow = {city, country, date, note, user_id: currentUser.id}
+    const slideshow = {city, country, date, note, user_id: currentUser.id, isReleased: false}
 
     fetch('/slideshows',{
       method: 'POST',
@@ -26,8 +26,8 @@ function NewFilm({currentUser}) {
     }).then(res => {
       if (res.ok) {
           res.json().then(slide => {
-              // updateSlide(slide)
-              console.log(slide.id)
+            updateSlideshows(slide)
+            console.log(slide.id)
           })
       } else {
           res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -40,15 +40,15 @@ function NewFilm({currentUser}) {
     setSlideInfo({ ...slideInfo, [name]: value })
   }
 
-  function handleImage(e) {
-    const data = new FormData()
-    data.append("post[image]", e.target.image.files[0]);
-    submitToAPI(data);
-  }
+  // function handleImage(e) {
+  //   const data = new FormData()
+  //   data.append("post[image]", e.target.image.files[0]);
+  //   submitToAPI(data);
+  // }
 
-  function submitToAPI(data) {
+  // function submitToAPI(data) {
 
-  }
+  // }
 
   return (
     <div>
@@ -56,14 +56,14 @@ function NewFilm({currentUser}) {
         <input 
           type='text'
           name='city'
-          placeholder='City name' 
+          placeholder='City' 
           value={city}
           onChange={handleChange}
         />
         <input 
           type='text'
           name='country'
-          placeholder='Country name' 
+          placeholder='Country' 
           value={country}
           onChange={handleChange}
         />
@@ -81,15 +81,15 @@ function NewFilm({currentUser}) {
           value={note}
           onChange={handleChange}
         />
-        <button type='submit'>Create Film</button>
+        <button type='submit'>Next</button>
       </form>
-      <form onSubmit={(e) => handleImage(e)}>
+      {/* <form onSubmit={(e) => handleImage(e)}>
         <input
           type='file'
           name='image'
           id='image'
         />
-      </form>
+      </form> */}
       {errors? errors.map(error => <div> {error[0]} {error[1]} </div>) :null}
     </div>
   )
