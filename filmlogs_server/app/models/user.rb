@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :slideshow
-  has_many :photos, through: :slideshow
+  has_many :slideshows
+  has_many :photos, through: :slideshows
 
   has_secure_password
   

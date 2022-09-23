@@ -13,13 +13,13 @@ class SlideshowsController < ApplicationController
 
   # POST '/slideshows'
   def create
-    newSlideshow = Slideshow.create!(slideshow_params)
-    render json: newSlideshow, status: :created
+    slideshow = Slideshow.create!(slideshow_params)
+    render json: slideshow, status: :created
   end
 
   # PATCH '/slideshows/:id'
   def update
-    @slideshow.update(slideshow_params)
+    @slideshow.update!(slideshow_params)
     render json: @slideshow, status: :ok
   end
 
