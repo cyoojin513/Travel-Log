@@ -1,8 +1,8 @@
-import { AppContext } from 'App'
 import React from 'react'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-function NewFilm({currentUser, updateSlideshows}) {
+function NewFilm({currentUser, updateSlideshows, getSlideId}) {
   const [ slideInfo, setSlideInfo ] = useState({
     city:'',
     country:'',
@@ -10,9 +10,9 @@ function NewFilm({currentUser, updateSlideshows}) {
     note:''
   })
   const { city, country, date, note } = slideInfo
-
+  
   const [ errors, setErrors ] = useState([])
-  // const [image, setimage] = useContext(AppContext)
+  const history = useHistory()
 
 
   function handleSubmit(e) {
@@ -27,7 +27,8 @@ function NewFilm({currentUser, updateSlideshows}) {
       if (res.ok) {
           res.json().then(slide => {
             updateSlideshows(slide)
-            console.log(slide.id)
+            getSlideId(slide.id)
+            history.push(`/postphotos`)
           })
       } else {
           res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -39,16 +40,6 @@ function NewFilm({currentUser, updateSlideshows}) {
     const { name, value } = e.target
     setSlideInfo({ ...slideInfo, [name]: value })
   }
-
-  // function handleImage(e) {
-  //   const data = new FormData()
-  //   data.append("post[image]", e.target.image.files[0]);
-  //   submitToAPI(data);
-  // }
-
-  // function submitToAPI(data) {
-
-  // }
 
   return (
     <div>
@@ -83,13 +74,6 @@ function NewFilm({currentUser, updateSlideshows}) {
         />
         <button type='submit'>Next</button>
       </form>
-      {/* <form onSubmit={(e) => handleImage(e)}>
-        <input
-          type='file'
-          name='image'
-          id='image'
-        />
-      </form> */}
       {errors? errors.map(error => <div> {error[0]} {error[1]} </div>) :null}
     </div>
   )

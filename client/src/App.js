@@ -6,15 +6,15 @@ import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
 import NewFilm from "./Components/NewFilm";
 import NavBar from "./Components/NavBar";
-import PostPhotos from 'Components/PostPhotos';
+import PostPhotos from './Components/PostPhotos';
 
-export const AppContext = createContext(null);
+// export const AppContext = createContext(null);
 
 function App() {
 
   const [ currentUser, setCurrentUser ] = useState("")
   const [ slideshows, setSlideshows ] = useState([])
-  const [ image, setimage ] = useState(AppContext)
+  const [ currentSlideId, setCurrentSlideId ] = useState(null)
 
   useEffect(() => {
     fetch('/slideshows')
@@ -33,7 +33,9 @@ function App() {
     setSlideshows([...slideshows, newMovie])
   }
 
-  console.log(currentUser)
+  function getSlideId(id) {
+    setCurrentSlideId(id)
+  }
 
   return (
     <div>
@@ -43,10 +45,14 @@ function App() {
           <UserPage slideshows={slideshows}/>
         </Route>
         <Route path='/newfilm'>
-          <NewFilm currentUser={currentUser} updateSlideshows={updateSlideshows}/>
+          <NewFilm
+            currentUser={currentUser}  
+            updateSlideshows={updateSlideshows}
+            getSlideId={getSlideId}  
+          />
         </Route>
         <Route path='/postphotos'>
-          <PostPhotos />
+          <PostPhotos currentSlideId={currentSlideId}/>
         </Route>
         <Route path="/signup">
           <Signup updateUser={updateUser} />

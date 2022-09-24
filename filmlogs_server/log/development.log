@@ -1964,3 +1964,1121 @@ Processing by SlideshowsController#index as */*
 Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 3328)
 
 
+Started POST "/slideshows" for 127.0.0.1 at 2022-09-23 21:41:42 -0400
+Processing by SlideshowsController#create as */*
+  Parameters: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "isReleased"=>false, "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "isReleased"=>false}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :isReleased, :slideshow. Context: { controller: SlideshowsController, action: create, request: #<ActionDispatch::Request:0x00007efc986c52c8>, params: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "isReleased"=>false, "controller"=>"slideshows", "action"=>"create", "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "isReleased"=>false}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.59ms)
+Completed 422 Unprocessable Entity in 9ms (Views: 0.9ms | ActiveRecord: 1.3ms | Allocations: 2073)
+
+
+Started GET "/main.ec366c335f417d0c9586.hot-update.json" for 127.0.0.1 at 2022-09-23 21:41:58 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/main.ec366c335f417d0c9586.hot-update.json"):
+  
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 21:41:58 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.36ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 3400)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 21:41:58 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.99ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 3327)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-23 21:42:02 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers]   [1m[36mSlideshow Load (0.7ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.87ms)
+Completed 200 OK in 159ms (Views: 2.0ms | ActiveRecord: 0.8ms | Allocations: 2416)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 21:42:02 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.92ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 3345)
+
+
+Started POST "/slideshows" for 127.0.0.1 at 2022-09-23 21:42:16 -0400
+Processing by SlideshowsController#create as */*
+  Parameters: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "user_id"=>1, "isReleased"=>false, "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "isReleased"=>false, "user_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :isReleased, :slideshow. Context: { controller: SlideshowsController, action: create, request: #<ActionDispatch::Request:0x000056143ebe0660>, params: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "user_id"=>1, "isReleased"=>false, "controller"=>"slideshows", "action"=>"create", "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2019.12.25", "note"=>"Christmas in NYC", "isReleased"=>false, "user_id"=>1}} }[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mSlideshow Create (0.6ms)[0m  [1m[32mINSERT INTO "slideshows" ("city", "country", "date", "note", "isReleased", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", "Manhattan"], ["country", "United States"], ["date", "2019.12.25"], ["note", "Christmas in NYC"], ["isReleased", nil], ["user_id", 1], ["created_at", "2022-09-24 01:42:16.977480"], ["updated_at", "2022-09-24 01:42:16.977480"]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:17:in `create'
+[active_model_serializers] Rendered SlideshowSerializer with ActiveModelSerializers::Adapter::Attributes (1.25ms)
+Completed 201 Created in 13ms (Views: 1.5ms | ActiveRecord: 3.4ms | Allocations: 4394)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 21:51:59 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.84ms)
+Completed 200 OK in 10ms (Views: 5.6ms | ActiveRecord: 1.3ms | Allocations: 5576)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-23 22:52:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers]   [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (11.03ms)
+Completed 200 OK in 184ms (Views: 17.2ms | ActiveRecord: 0.8ms | Allocations: 23608)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 22:52:53 -0400
+Started GET "/photos" for 127.0.0.1 at 2022-09-23 22:52:53 -0400
+Processing by SlideshowsController#index as */*
+Processing by PhotosController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+  ↳ app/controllers/photos_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.04ms)
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 0.3ms | Allocations: 6478)
+
+
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.3ms)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.3ms | Allocations: 9474)
+
+
+Started GET "/photos" for 127.0.0.1 at 2022-09-23 22:52:53 -0400
+Processing by PhotosController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  ↳ app/controllers/photos_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.04ms)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1363)
+
+
+Started GET "/photos" for 127.0.0.1 at 2022-09-23 22:52:53 -0400
+Processing by PhotosController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  ↳ app/controllers/photos_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.03ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.1ms | Allocations: 1339)
+
+
+Started POST "/slideshows" for 127.0.0.1 at 2022-09-23 22:53:08 -0400
+Processing by SlideshowsController#create as */*
+  Parameters: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Christmas in NYC", "user_id"=>1, "isReleased"=>false, "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Christmas in NYC", "isReleased"=>false, "user_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :isReleased, :slideshow. Context: { controller: SlideshowsController, action: create, request: #<ActionDispatch::Request:0x00007f13780a1e68>, params: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Christmas in NYC", "user_id"=>1, "isReleased"=>false, "controller"=>"slideshows", "action"=>"create", "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Christmas in NYC", "isReleased"=>false, "user_id"=>1}} }[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mSlideshow Create (0.2ms)[0m  [1m[32mINSERT INTO "slideshows" ("city", "country", "date", "note", "isReleased", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", "Manhattan"], ["country", "United States"], ["date", "2022.09.22"], ["note", "Christmas in NYC"], ["isReleased", nil], ["user_id", 1], ["created_at", "2022-09-24 02:53:08.359596"], ["updated_at", "2022-09-24 02:53:08.359596"]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:17:in `create'
+[active_model_serializers] Rendered SlideshowSerializer with ActiveModelSerializers::Adapter::Attributes (1.05ms)
+Completed 201 Created in 9ms (Views: 1.3ms | ActiveRecord: 4.3ms | Allocations: 4692)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 22:57:56 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.23ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.2ms | Allocations: 7366)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-23 22:59:18 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13847d70c8 @tempfile=#<Tempfile:/tmp/RackMultipart20220923-14927-pxo4tf.png>, @original_filename="2022-09-21 170237.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"2022-09-21 170237.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :post. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f13848376d0>, params: {"post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13847d70c8 @tempfile=#<Tempfile:/tmp/RackMultipart20220923-14927-pxo4tf.png>, @original_filename="2022-09-21 170237.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"2022-09-21 170237.png\"\r\nContent-Type: image/png\r\n">}, "controller"=>"photos", "action"=>"create"} }[0m
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 22:59:18 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (23.61ms)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 0.5ms | Allocations: 40537)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 422 Unprocessable Entity in 533ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 706624)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 23:01:23 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.45ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.2ms | Allocations: 7367)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-23 23:52:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PhotosController#create as */*
+  Parameters: {"post"=>{"image"=>"undefined"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :post. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c8394260>, params: {"post"=>{"image"=>"undefined"}, "controller"=>"photos", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 422 Unprocessable Entity in 475ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 710755)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 23:54:17 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (1.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (10.76ms)
+Completed 200 OK in 28ms (Views: 19.9ms | ActiveRecord: 3.4ms | Allocations: 17078)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 23:57:56 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.46ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.3ms | Allocations: 7382)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-23 23:57:57 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.03ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 7398)
+
+
+Started POST "/slideshows" for 127.0.0.1 at 2022-09-23 23:59:42 -0400
+Processing by SlideshowsController#create as */*
+  Parameters: {"city"=>"Princeton", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false, "slideshow"=>{"city"=>"Princeton", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :isReleased, :slideshow. Context: { controller: SlideshowsController, action: create, request: #<ActionDispatch::Request:0x00007f95c8e88248>, params: {"city"=>"Princeton", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false, "controller"=>"slideshows", "action"=>"create", "slideshow"=>{"city"=>"Princeton", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1998)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:00:47 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.93ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 7379)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-24 00:00:51 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers]   [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.55ms)
+Completed 200 OK in 158ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 3095)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:00:51 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.87ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 7369)
+
+
+Started POST "/slideshows" for 127.0.0.1 at 2022-09-24 00:01:05 -0400
+Processing by SlideshowsController#create as */*
+  Parameters: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "user_id"=>1, "isReleased"=>false, "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false, "user_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :isReleased, :slideshow. Context: { controller: SlideshowsController, action: create, request: #<ActionDispatch::Request:0x00007f95c90efdb0>, params: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "user_id"=>1, "isReleased"=>false, "controller"=>"slideshows", "action"=>"create", "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false, "user_id"=>1}} }[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mSlideshow Create (0.2ms)[0m  [1m[32mINSERT INTO "slideshows" ("city", "country", "date", "note", "isReleased", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", "Manhattan"], ["country", "United States"], ["date", "2022.09.22"], ["note", "Hello"], ["isReleased", nil], ["user_id", 1], ["created_at", "2022-09-24 04:01:05.732401"], ["updated_at", "2022-09-24 04:01:05.732401"]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:17:in `create'
+[active_model_serializers] Rendered SlideshowSerializer with ActiveModelSerializers::Adapter::Attributes (1.19ms)
+Completed 201 Created in 9ms (Views: 1.4ms | ActiveRecord: 4.5ms | Allocations: 4563)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:04:13 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.03ms)
+Completed 200 OK in 13ms (Views: 6.7ms | ActiveRecord: 1.9ms | Allocations: 9387)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:04:37 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.85ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 9385)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:06:05 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"post"=>{"image"=>"undefined"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :post. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c8e0df48>, params: {"post"=>{"image"=>"undefined"}, "controller"=>"photos", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1725)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:09:06 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+------WebKitFormBoundaryDCdlOsrdAbAbQrKQ
+Content-Disposition: form-data; name="post[image]"
+
+undefined
+------WebKitFormBoundaryDCdlOsrdAbAbQrKQ--
+
+Processing by PhotosController#create as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.1ms | Allocations: 687)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/photos_controller.rb:33:in `photo_params'
+app/controllers/photos_controller.rb:16:in `create'
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:09:29 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.8ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.3ms | Allocations: 9384)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:09:34 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"slide_id"=>0, "photo"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :slide_id, :photo. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x0000563d2ca1e568>, params: {"slide_id"=>0, "controller"=>"photos", "action"=>"create", "photo"=>{}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 1731)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:09:49 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"slide_id"=>0, "photo"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :slide_id, :photo. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95cb5c8088>, params: {"slide_id"=>0, "controller"=>"photos", "action"=>"create", "photo"=>{}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 1744)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:10:36 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.07ms)
+Completed 200 OK in 13ms (Views: 6.7ms | ActiveRecord: 2.0ms | Allocations: 9389)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:14:13 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.01ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.3ms | Allocations: 9385)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:16:13 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.39ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 9396)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-09-24 00:16:22 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers]   [1m[36mSlideshow Load (0.5ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.78ms)
+Completed 200 OK in 155ms (Views: 2.2ms | ActiveRecord: 0.7ms | Allocations: 2747)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:16:22 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.03ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.3ms | Allocations: 9383)
+
+
+Started POST "/slideshows" for 127.0.0.1 at 2022-09-24 00:16:44 -0400
+Processing by SlideshowsController#create as */*
+  Parameters: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "user_id"=>1, "isReleased"=>false, "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false, "user_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :isReleased, :slideshow. Context: { controller: SlideshowsController, action: create, request: #<ActionDispatch::Request:0x00007f95c8f2eeb8>, params: {"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "user_id"=>1, "isReleased"=>false, "controller"=>"slideshows", "action"=>"create", "slideshow"=>{"city"=>"Manhattan", "country"=>"United States", "date"=>"2022.09.22", "note"=>"Hello", "isReleased"=>false, "user_id"=>1}} }[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mSlideshow Create (0.5ms)[0m  [1m[32mINSERT INTO "slideshows" ("city", "country", "date", "note", "isReleased", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["city", "Manhattan"], ["country", "United States"], ["date", "2022.09.22"], ["note", "Hello"], ["isReleased", nil], ["user_id", 1], ["created_at", "2022-09-24 04:16:44.711311"], ["updated_at", "2022-09-24 04:16:44.711311"]]
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/slideshows_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 5]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:17:in `create'
+[active_model_serializers] Rendered SlideshowSerializer with ActiveModelSerializers::Adapter::Attributes (1.12ms)
+Completed 201 Created in 9ms (Views: 1.4ms | ActiveRecord: 4.3ms | Allocations: 4404)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:17:35 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"slide_id"=>5, "photo"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameters: :slide_id, :photo. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c92a3fa8>, params: {"slide_id"=>5, "controller"=>"photos", "action"=>"create", "photo"=>{}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1725)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:19:30 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+------WebKitFormBoundaryCVWM3tvT5nkKBdqU
+Content-Disposition: form-data; name="post[image]"
+
+undefined
+------WebKitFormBoundaryCVWM3tvT5nkKBdqU--
+
+Processing by PhotosController#create as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.1ms | Allocations: 683)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/photos_controller.rb:33:in `photo_params'
+app/controllers/photos_controller.rb:16:in `create'
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:19:48 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+------WebKitFormBoundaryvJIMBltmPCDybQCv
+Content-Disposition: form-data; name="post[image]"
+
+undefined
+------WebKitFormBoundaryvJIMBltmPCDybQCv--
+
+Processing by PhotosController#create as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.1ms | Allocations: 680)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/photos_controller.rb:33:in `photo_params'
+app/controllers/photos_controller.rb:16:in `create'
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:19:52 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"photo"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :photo. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x0000563d2c2b74f0>, params: {"controller"=>"photos", "action"=>"create", "photo"=>{}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 422 Unprocessable Entity in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 1720)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:20:12 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"slideshow_id"=>5, "photo"=>{"slideshow_id"=>5}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :photo. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x0000563d2cc63580>, params: {"slideshow_id"=>5, "controller"=>"photos", "action"=>"create", "photo"=>{"slideshow_id"=>5}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+  [1m[36mSlideshow Load (2.2ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+  [1m[36mPhoto Create (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("image", "slideshow_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["image", nil], ["slideshow_id", 5], ["created_at", "2022-09-24 04:20:12.815044"], ["updated_at", "2022-09-24 04:20:12.815044"]]
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "slideshows" ON "users"."id" = "slideshows"."user_id" WHERE "slideshows"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/photos_controller.rb:17:in `create'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/photos_controller.rb:17:in `create'
+[active_model_serializers] Rendered PhotoSerializer with ActiveModelSerializers::Adapter::Attributes (39.98ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 6.6ms | Allocations: 18021)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/photos_controller.rb:17:in `create'
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:24:58 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"slideshow_id"=>5, "photo"=>{"slideshow_id"=>5}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :photo. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c8982190>, params: {"slideshow_id"=>5, "controller"=>"photos", "action"=>"create", "photo"=>{"slideshow_id"=>5}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+  [1m[36mPhoto Create (0.1ms)[0m  [1m[32mINSERT INTO "photos" ("image", "slideshow_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["image", nil], ["slideshow_id", 5], ["created_at", "2022-09-24 04:24:58.067351"], ["updated_at", "2022-09-24 04:24:58.067351"]]
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/photos_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "slideshows" ON "users"."id" = "slideshows"."user_id" WHERE "slideshows"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/photos_controller.rb:17:in `create'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/photos_controller.rb:17:in `create'
+[active_model_serializers] Rendered PhotoSerializer with ActiveModelSerializers::Adapter::Attributes (6.91ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.3ms | Allocations: 13960)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/photos_controller.rb:17:in `create'
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:38:53 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"post"=>{"image"=>"undefined", "slideshow_id"=>"5"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :post. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c8ab7a88>, params: {"post"=>{"image"=>"undefined", "slideshow_id"=>"5"}, "controller"=>"photos", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 422 Unprocessable Entity in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1874)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:39:36 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"post"=>{"image"=>"undefined", "slideshow_id"=>"5"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :post. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c8a76bc8>, params: {"post"=>{"image"=>"undefined", "slideshow_id"=>"5"}, "controller"=>"photos", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1731)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:41:12 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f95c8984800 @tempfile=#<Tempfile:/tmp/RackMultipart20220924-16082-185w9on.png>, @original_filename="2022-09-22 155807.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"2022-09-22 155807.png\"\r\nContent-Type: image/png\r\n">, "slideshow_id"=>"5"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :post. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c898e698>, params: {"post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f95c8984800 @tempfile=#<Tempfile:/tmp/RackMultipart20220924-16082-185w9on.png>, @original_filename="2022-09-22 155807.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"2022-09-22 155807.png\"\r\nContent-Type: image/png\r\n">, "slideshow_id"=>"5"}, "controller"=>"photos", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1749)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:43:37 -0400
+Processing by PhotosController#create as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 422 Unprocessable Entity in 2ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1659)
+
+
+Started POST "/photos" for 127.0.0.1 at 2022-09-24 00:46:34 -0400
+Processing by PhotosController#create as */*
+  Parameters: {"post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f95c91ae7d8 @tempfile=#<Tempfile:/tmp/RackMultipart20220924-16082-1yc70dj.png>, @original_filename="2022-09-22 155807.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"2022-09-22 155807.png\"\r\nContent-Type: image/png\r\n">, "slideshow_id"=>"5"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[31mUnpermitted parameter: :post. Context: { controller: PhotosController, action: create, request: #<ActionDispatch::Request:0x00007f95c91bc838>, params: {"post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f95c91ae7d8 @tempfile=#<Tempfile:/tmp/RackMultipart20220924-16082-1yc70dj.png>, @original_filename="2022-09-22 155807.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"2022-09-22 155807.png\"\r\nContent-Type: image/png\r\n">, "slideshow_id"=>"5"}, "controller"=>"photos", "action"=>"create"} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 422 Unprocessable Entity in 7ms (Views: 0.5ms | ActiveRecord: 1.4ms | Allocations: 1751)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:49:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 5]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (29.62ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 1.1ms | Allocations: 48519)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/slideshows_controller.rb:6:in `index'
+Started GET "/main.37fd1cf2ad8ed8c20540.hot-update.json" for 127.0.0.1 at 2022-09-24 00:49:47 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/main.37fd1cf2ad8ed8c20540.hot-update.json"):
+  
+Started POST "/login" for 127.0.0.1 at 2022-09-24 00:50:04 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers]   [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.76ms)
+Completed 200 OK in 156ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 3406)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:50:05 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 5]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.71ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.5ms | Allocations: 21703)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/slideshows_controller.rb:6:in `index'
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:50:42 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 5]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (17.3ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.6ms | Allocations: 21702)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/slideshows_controller.rb:6:in `index'
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:52:29 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 5]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (25.22ms)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 1.3ms | Allocations: 48516)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/slideshows_controller.rb:6:in `index'
+Started POST "/login" for 127.0.0.1 at 2022-09-24 00:52:37 -0400
+Started POST "/login" for 127.0.0.1 at 2022-09-24 00:52:41 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"yoojin9005@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yoojin9005@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers]   [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:9:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.86ms)
+Completed 200 OK in 159ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 5176)
+
+
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+[active_model_serializers]   [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows" WHERE "slideshows"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:9:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.62ms)
+Completed 200 OK in 160ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 6239)
+
+
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:52:43 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.1ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 5]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.51ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms | Allocations: 21804)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/slideshows_controller.rb:6:in `index'
+Started GET "/slideshows" for 127.0.0.1 at 2022-09-24 00:52:57 -0400
+Processing by SlideshowsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `current_user'
+  [1m[36mSlideshow Load (0.0ms)[0m  [1m[34mSELECT "slideshows".* FROM "slideshows"[0m
+  ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 2]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 3]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 4]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."slideshow_id" = ?[0m  [["slideshow_id", 5]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Photo"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/slideshows_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.67ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.5ms | Allocations: 21708)
+
+
+  
+SystemStackError (stack level too deep):
+  
+app/controllers/slideshows_controller.rb:6:in `index'

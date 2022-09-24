@@ -30,6 +30,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.permit(:slideshow_id)
+    params.permit(:slideshow_id, :image)
   end
 end
