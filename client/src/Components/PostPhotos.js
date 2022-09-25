@@ -1,8 +1,34 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
 function PostPhotos({currentSlideId}) {
-  const [image, setImage] = useState(null)
+  // const [image, setImage] = useState(null)
+  const [selectedImages, setSelectedImages] = useState([])
+
+
+  function imageHandleChange(e) {
+    if(e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
+      
+      setSelectedImages((images) => images.concat(fileArray))
+      Array.from(e.target.files).map(
+        (file) => URL.revokeObjectURL(file)
+      )
+    }
+  }
+
+  function renderPhotos(source) {
+    return source.map((photo) => {
+      return <img src={photo} key={photo} className='renderedPhotos' onClick={() => renderDelete(photo)}/>
+    })
+  }
+
+  function renderDelete(source) {
+    const updatedList = [...selectedImages]
+    updatedList.splice(selectedImages.indexOf(source), 1)
+    setSelectedImages(updatedList)
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -24,19 +50,26 @@ function PostPhotos({currentSlideId}) {
     })
       .then(res => res.json())
       .then(data => {
-        setImage(data.image_url)
+        // setImage(data.image_url)
         console.log("Post successfully!", data)
       })
       .catch((error) => console.error(error))
   }
 
   return (
-    <div>
+    <PostPhotoContainer>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input type='file' multiple name='image' id='image'/>
+        <input 
+          type='file' 
+          multiple 
+          name='image' 
+          id='image'
+          onChange={imageHandleChange}
+        />
         <button type='submit'>Submit Film</button>
       </form>
-    </div>
+      {renderPhotos(selectedImages)}
+    </PostPhotoContainer>
   )
 }
 
