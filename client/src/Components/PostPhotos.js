@@ -10,12 +10,11 @@ function PostPhotos({currentSlideId}) {
     const uploadingImages = [e.target.image.files]
 
     uploadingImages.map((image) => 
-      data.append("post[images]", images),
+      data.append("post[images]", image),
       data.append("slideshow_id", currentSlideId)
     )
 
     submitToAPI(data)
-    // data.forEach(uploadingData => submitToAPI(uploadingData))
   }
 
   function submitToAPI(data) {
