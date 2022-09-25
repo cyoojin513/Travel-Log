@@ -7,12 +7,16 @@ function PostPhotos({currentSlideId}) {
   function handleSubmit(e) {
     e.preventDefault()
     const data = new FormData()
-    data.append("post[image]", e.target.image.files[0])
-    data.append("post[slideshow_id]", currentSlideId)
-    submitToAPI(data)
-  }
+    const uploadingImages = [e.target.image.files]
 
-  console.log(currentSlideId)
+    uploadingImages.map((image) => 
+      data.append("post[images]", images),
+      data.append("slideshow_id", currentSlideId)
+    )
+
+    submitToAPI(data)
+    // data.forEach(uploadingData => submitToAPI(uploadingData))
+  }
 
   function submitToAPI(data) {
     fetch('/photos', {
@@ -20,9 +24,9 @@ function PostPhotos({currentSlideId}) {
       body: data,
     })
       .then(res => res.json())
-      .then((data) => {
+      .then(data => {
         setImage(data.image_url)
-        console.log(data)
+        console.log("Post successfully!", data)
       })
       .catch((error) => console.error(error))
   }
@@ -30,12 +34,7 @@ function PostPhotos({currentSlideId}) {
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type='file'
-          multiple
-          name='image'
-          id='image'
-        />
+        <input type='file' multiple name='image' id='image'/>
         <button type='submit'>Submit Film</button>
       </form>
     </div>
