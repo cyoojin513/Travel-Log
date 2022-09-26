@@ -17,7 +17,6 @@ function Movie() {
     })
   }, [])
 
-  console.log(slideshow.photos)
 
 
   return (

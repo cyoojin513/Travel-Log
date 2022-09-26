@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :photos, only: [:index, :show, :create, :destroy]
+  resources :photos, only: [:index, :create, :destroy]
   resources :slideshows
 
   resources :users, only: [:show, :create]

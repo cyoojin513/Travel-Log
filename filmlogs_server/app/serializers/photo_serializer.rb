@@ -1,5 +1,14 @@
 class PhotoSerializer < ActiveModel::Serializer
-  attributes :id, :images, :image_url
+  # include JSONAPI::Serializer
+  include Rails.application.routes.url_helpers
+
+  attributes :id, :image
+
   has_one :slideshow
   has_one :user
+
+  # def image_url
+  #   Rails.application.routes.url_helpers.url_for(image) if image.attached?
+  # end
+
 end
