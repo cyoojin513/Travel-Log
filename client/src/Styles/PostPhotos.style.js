@@ -6,6 +6,7 @@ const PostPhotoContainer = styled.div`
     width: 100px;
     height: 100px;
     object-fit: cover;
+    
   }
 `
 

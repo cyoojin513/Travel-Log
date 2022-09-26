@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
-function PostPhotos({currentSlideId}) {
+function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
+  
   // const [image, setImage] = useState(null)
   const [selectedImages, setSelectedImages] = useState([])
 
+  const history = useHistory()
 
   function imageHandleChange(e) {
     if(e.target.files) {
@@ -20,7 +22,12 @@ function PostPhotos({currentSlideId}) {
 
   function renderPhotos(source) {
     return source.map((photo) => {
-      return <img src={photo} key={photo} className='renderedPhotos' onClick={() => renderDelete(photo)}/>
+      return <img 
+        src={photo} 
+        key={photo} 
+        className='renderedPhotos' 
+        onClick={() => renderDelete(photo)}
+      />
     })
   }
 
@@ -54,6 +61,19 @@ function PostPhotos({currentSlideId}) {
         console.log("Post successfully!", data)
       })
       .catch((error) => console.error(error))
+
+    fetch(`/slideshows/${currentSlideId}`, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        isReleased: true
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        updateSlideshows(data)
+        history.push(`/user/${currentUser.id}`)
+      })
   }
 
   return (

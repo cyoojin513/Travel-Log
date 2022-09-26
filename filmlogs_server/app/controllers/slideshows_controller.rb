@@ -1,5 +1,5 @@
 class SlideshowsController < ApplicationController
-  before_action :find_slidshow, only: [:show, :update, :destroy]
+  before_action :find_slideshow, only: [:show, :update, :destroy]
 
   # GET '/slideshows'
   def index
@@ -36,6 +36,6 @@ class SlideshowsController < ApplicationController
   end
 
   def slideshow_params
-    params.permit(:city, :country, :date, :note, :user_id)
+    params.permit(:city, :country, :date, :note, :user_id, :isReleased)
   end
 end

@@ -7,6 +7,7 @@ import UserPage from "./Components/UserPage";
 import NewFilm from "./Components/NewFilm";
 import NavBar from "./Components/NavBar";
 import PostPhotos from './Components/PostPhotos';
+import Movie from 'Components/Movie';
 
 // export const AppContext = createContext(null);
 
@@ -44,6 +45,9 @@ function App() {
         <Route path='/user/:id'>
           <UserPage slideshows={slideshows}/>
         </Route>
+        <Route path='/movie/:id'>
+          <Movie />
+        </Route>
         <Route path='/newfilm'>
           <NewFilm
             currentUser={currentUser}  
@@ -52,7 +56,11 @@ function App() {
           />
         </Route>
         <Route path='/postphotos'>
-          <PostPhotos currentSlideId={currentSlideId}/>
+          <PostPhotos
+            currentSlideId={currentSlideId}
+            currentUser={currentUser}
+            updateSlideshows={updateSlideshows}
+          />
         </Route>
         <Route path="/signup">
           <Signup updateUser={updateUser} />

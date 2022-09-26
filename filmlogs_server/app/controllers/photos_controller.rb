@@ -3,7 +3,8 @@ class PhotosController < ApplicationController
 
   # GET '/photos'
   def index
-    render json: Photo.all, status: :ok
+    @allPhoto = Photo.all
+    render json: PhotoSerializer.new(@allPhoto).serializable_hash[:data][:attributes]
   end
 
   # GET '/photos/:id'
