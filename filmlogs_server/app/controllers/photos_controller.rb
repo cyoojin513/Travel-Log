@@ -8,11 +8,6 @@ class PhotosController < ApplicationController
     # render json: PhotoSerializer.new(@allPhoto).serializable_hash[:data][:attributes]
   end
 
-  # # GET '/photos/:id'
-  # def show
-  #   render json: @photo, status: :ok
-  # end
-
   # POST '/photos'
   def create
     newPhoto = Photo.create!(photo_params)

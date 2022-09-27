@@ -18,7 +18,7 @@ function UserPage({slideshows}) {
           : null
         )}
       </div>
-      {/* <h1>Pre-release Films</h1>
+      <h1>Pre-release Films</h1>
       <div>
         {slideshows.map((slide) => slide.isReleased
           ? null
@@ -30,7 +30,7 @@ function UserPage({slideshows}) {
               date = {slide.date}
             />
         )}
-      </div> */}
+      </div>
     </div>
   )
 }

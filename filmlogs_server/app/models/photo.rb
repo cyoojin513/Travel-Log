@@ -6,10 +6,10 @@ class Photo < ApplicationRecord
 
   # validate :image_type
 
-  # def image_url
-  #   # Rails.application.routes.url_helpers.rails_blob_path(images, only_path: true)
-  #   Rails.application.routes.url_helpers.url_for(image) if image.attached?
-  # end
+  def image_url
+    Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)
+    # Rails.application.routes.url_helpers.url_for(image) if image.attached?
+  end
 
   # private
 
