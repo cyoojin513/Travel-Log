@@ -40,14 +40,18 @@ function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
   function handleSubmit(e) {
     e.preventDefault()
     const data = new FormData()
-    const uploadingImages = [e.target.image.files]
+    const uploadingImages = e.target.image.files
 
-    uploadingImages.map((image) => 
-      data.append("post[images]", image),
-      data.append("slideshow_id", currentSlideId)
-    )
+    for (let i = 0; i < uploadingImages.length; i++) {
+      // setTimeout(() => {
+        data.append("image", e.target.image.files[i])
+        data.append("slideshow_id", currentSlideId)
+        submitToAPI(data)
+      // }, "1000")
+    }
 
-    submitToAPI(data)
+    updateIsReleased()
+
   }
 
   function submitToAPI(data) {
@@ -58,10 +62,12 @@ function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
       .then(res => res.json())
       .then(data => {
         // setImage(data.image_url)
-        console.log("Post successfully!", data)
+        console.log(data)
       })
       .catch((error) => console.error(error))
+  }
 
+  function updateIsReleased() {
     fetch(`/slideshows/${currentSlideId}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
@@ -70,8 +76,8 @@ function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
       })
     })
       .then(res => res.json())
-      .then(data => {
-        updateSlideshows(data)
+      .then(res => {
+        updateSlideshows(res)
         history.push(`/user/${currentUser.id}`)
       })
   }

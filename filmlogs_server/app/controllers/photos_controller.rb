@@ -4,13 +4,14 @@ class PhotosController < ApplicationController
   # GET '/photos'
   def index
     @allPhoto = Photo.all
-    render json: PhotoSerializer.new(@allPhoto).serializable_hash[:data][:attributes]
+    render json: @allPhoto, status: :ok
+    # render json: PhotoSerializer.new(@allPhoto).serializable_hash[:data][:attributes]
   end
 
-  # GET '/photos/:id'
-  def show
-    render json: @photo, status: :ok
-  end
+  # # GET '/photos/:id'
+  # def show
+  #   render json: @photo, status: :ok
+  # end
 
   # POST '/photos'
   def create
@@ -23,6 +24,7 @@ class PhotosController < ApplicationController
     @photo.destroy
     head :no_content
   end
+  
 
   private
 
@@ -31,6 +33,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.permit(:slideshow_id, images: [])
+    params.permit(:slideshow_id, :image)
   end
 end
