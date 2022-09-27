@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
+// @ts-nocheck
 import React, { useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
-function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
+function PostPhotos({currentSlideId, currentUser, updatingIsLeased}) {
   
-  // const [image, setImage] = useState(null)
   const [selectedImages, setSelectedImages] = useState([])
 
   const history = useHistory()
@@ -43,14 +44,12 @@ function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
     const uploadingImages = e.target.image.files
 
     for (let i = 0; i < uploadingImages.length; i++) {
-      // setTimeout(() => {
-        data.append("image", e.target.image.files[i])
-        data.append("slideshow_id", currentSlideId)
-        submitToAPI(data)
-      // }, "1000")
+      data.append("image", e.target.image.files[i])
+      data.append("slideshow_id", currentSlideId)
+      submitToAPI(data)
     }
 
-    updateIsReleased()
+    setTimeout(() => {updateIsReleased()}, '500')
 
   }
 
@@ -60,10 +59,6 @@ function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
       body: data,
     })
       .then(res => res.json())
-      .then(data => {
-        // setImage(data.image_url)
-        console.log(data)
-      })
       .catch((error) => console.error(error))
   }
 
@@ -77,7 +72,7 @@ function PostPhotos({currentSlideId, currentUser, updateSlideshows}) {
     })
       .then(res => res.json())
       .then(res => {
-        updateSlideshows(res)
+        updatingIsLeased(res)
         history.push(`/user/${currentUser.id}`)
       })
   }

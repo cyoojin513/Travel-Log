@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect } from 'react'
 import { Route, Switch } from "react-router-dom";
 import { createContext, useState } from 'react'
@@ -30,8 +31,23 @@ function App() {
     setCurrentUser(user)
   }
 
+  function deleteRendered(id) {
+    setSlideshows(slideshows?.filter((item) => item.id != id))
+  }
+
+  console.log(slideshows)
+
   function updateSlideshows(newMovie) {
     setSlideshows([...slideshows, newMovie])
+  }
+
+  function updatingIsLeased(updatedSlide) {
+    const updated = slideshows.map((item) =>{
+      if (item.id === updatedSlide.id) {
+        return updatedSlide
+      } else {return item} 
+    })
+    setSlideshows(updated)
   }
 
   function getSlideId(id) {
@@ -46,7 +62,7 @@ function App() {
           <UserPage slideshows={slideshows}/>
         </Route>
         <Route path='/movie/:id'>
-          <Movie />
+          <Movie currentUser={currentUser} deleteRendered={deleteRendered}/>
         </Route>
         <Route path='/newfilm'>
           <NewFilm
@@ -59,7 +75,7 @@ function App() {
           <PostPhotos
             currentSlideId={currentSlideId}
             currentUser={currentUser}
-            updateSlideshows={updateSlideshows}
+            updatingIsLeased={updatingIsLeased}
           />
         </Route>
         <Route path="/signup">
