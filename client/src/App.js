@@ -11,7 +11,7 @@ import PostPhotos from './Components/PostPhotos';
 import Movie from 'Components/Movie';
 import EditFilm from 'Components/EditFilm';
 // Styling
-import { AppContainer } from './Styles/App.style'
+import { AppContainer, SecondRow } from './Styles/App.style'
 
 function App() {
 
@@ -58,40 +58,42 @@ function App() {
   return (
     <AppContainer>
       <NavBar currentUser={currentUser} updateUser={updateUser}/>
-      <Switch>
-        <Route path='/user/:id'>
-          <UserPage slideshows={slideshows}/>
-        </Route>
-        <Route path='/movie/:id'>
-          <Movie currentUser={currentUser} deleteRendered={deleteRendered}/>
-        </Route>
-        <Route path='/newfilm'>
-          <NewFilm
-            currentUser={currentUser}  
-            updateSlideshows={updateSlideshows}
-            getSlideId={getSlideId}  
-          />
-        </Route>
-        <Route path='/editfilm/:id'>
-          <EditFilm 
-            updatingIsReleased={updatingIsReleased}
-            getSlideId={getSlideId}  
-          />
-        </Route>
-        <Route path='/postphotos'>
-          <PostPhotos
-            currentSlideId={currentSlideId}
-            currentUser={currentUser}
-            updatingIsReleased={updatingIsReleased}
-          />
-        </Route>
-        <Route path="/signup">
-          <Signup updateUser={updateUser} />
-        </Route>
-        <Route exact path="/">
-          <Login updateUser={updateUser} />
-        </Route>
-      </Switch>
+      <SecondRow>
+        <Switch>
+          <Route path='/user/:id'>
+            <UserPage slideshows={slideshows}/>
+          </Route>
+          <Route path='/movie/:id'>
+            <Movie currentUser={currentUser} deleteRendered={deleteRendered}/>
+          </Route>
+          <Route path='/newfilm'>
+            <NewFilm
+              currentUser={currentUser}  
+              updateSlideshows={updateSlideshows}
+              getSlideId={getSlideId}  
+            />
+          </Route>
+          <Route path='/editfilm/:id'>
+            <EditFilm 
+              updatingIsReleased={updatingIsReleased}
+              getSlideId={getSlideId}  
+            />
+          </Route>
+          <Route path='/postphotos'>
+            <PostPhotos
+              currentSlideId={currentSlideId}
+              currentUser={currentUser}
+              updatingIsReleased={updatingIsReleased}
+            />
+          </Route>
+          <Route path="/signup">
+            <Signup updateUser={updateUser} />
+          </Route>
+          <Route exact path="/">
+            <Login updateUser={updateUser} />
+          </Route>
+        </Switch>
+      </SecondRow>
     </AppContainer>
   );
 }

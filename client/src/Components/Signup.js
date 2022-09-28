@@ -51,8 +51,9 @@ function Signup({updateUser}) {
       <MainContainer>
         {/* <label id="toggle-label" for="toggle-1">I'm a toggle</label>
         <input type="checkbox" id="toggle-1"/> */}
-        <div className='thecard'>
+        <div className='card-grid'>
           <div className='signup-form'>
+            <h2>Sign Up</h2>
             <form onSubmit={onSubmit}> 
               <input 
                 type='text'

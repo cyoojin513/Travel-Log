@@ -45,27 +45,28 @@ function Login({updateUser}) {
   return (
     <div>
       <MainContainer>
-        <div className='thecard'>
+        <div className='card-grid'>
           <div className='login-form'>
+            <h2>Log In</h2>
             <form onSubmit={onSubmit}>
-            <input 
-              type='text' 
-              name='email' 
-              placeholder='Email' 
-              value={email} 
-              onChange={handleChange}
-            />
-            <input 
-              type='password' 
-              name='password' 
-              placeholder='Password'
-              value={password} 
-              onChange={handleChange} 
-            />
-            <input type='submit' value='Login'/>
-          </form>
-          {errors? <div>{errors.map(error => error[1])}</div>:null}
-          <Link to={'/signup'} >Sign up</Link>
+              <input 
+                type='text' 
+                name='email' 
+                placeholder='Email' 
+                value={email} 
+                onChange={handleChange}
+              />
+              <input 
+                type='password' 
+                name='password' 
+                placeholder='Password'
+                value={password} 
+                onChange={handleChange} 
+              />
+              <input type='submit' value='Log in'/>
+            </form>
+            {errors? <div>{errors.map(error => error[1])}</div>:null}
+            <Link to={'/signup'} className='signup-link'>Sign up</Link>
           </div>
         </div>
       </MainContainer>

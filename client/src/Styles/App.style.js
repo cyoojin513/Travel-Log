@@ -1,6 +1,12 @@
 import styled from "styled-components"
 
 const AppContainer = styled.div`
-  background-color: #252525;
+  display: grid;
+  grid-template-rows: 50px 1fr;  
 `
-export { AppContainer }
+
+const SecondRow = styled.div`
+  grid-row: 2;
+`
+
+export { AppContainer, SecondRow }
