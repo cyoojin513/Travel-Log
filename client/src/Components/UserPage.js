@@ -1,5 +1,5 @@
 import React from 'react'
-import { MyPageContainer } from 'Styles/UserPage.style'
+import { MyPageContainer, CardContainer } from 'Styles/UserPage.style'
 import MovieCard from './MovieCard'
 import PreLeaseCard from './PreLeaseCard'
 
@@ -7,7 +7,7 @@ function UserPage({slideshows}) {
   return (
     <MyPageContainer>
       <h1 className='my-movie-title'>My Movies</h1>
-      <div>
+      <CardContainer>
         {slideshows.map((slide) => slide.isReleased
           ? <MovieCard
               key = {slide.id}
@@ -18,9 +18,9 @@ function UserPage({slideshows}) {
             />
           : null
         )}
-      </div>
+      </CardContainer>
       <h1 className='pre-release-title'>Pre-release Films</h1>
-      <div>
+      <CardContainer>
         {slideshows.map((slide) => slide.isReleased
           ? null
           : <PreLeaseCard
@@ -31,7 +31,7 @@ function UserPage({slideshows}) {
               date = {slide.date}
             />
         )}
-      </div>
+      </CardContainer>
     </MyPageContainer>
   )
 }

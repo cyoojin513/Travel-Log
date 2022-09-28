@@ -22,4 +22,8 @@ const MyPageContainer = styled.div`
   }
 `
 
-export { MyPageContainer }
+const CardContainer = styled.div`
+  margin-left: 30px;
+`
+
+export { MyPageContainer, CardContainer }
