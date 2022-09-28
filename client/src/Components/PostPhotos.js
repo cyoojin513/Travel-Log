@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
-function PostPhotos({currentSlideId, currentUser, updatingIsLeased}) {
+function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
   
   const [selectedImages, setSelectedImages] = useState([])
 
@@ -49,7 +49,7 @@ function PostPhotos({currentSlideId, currentUser, updatingIsLeased}) {
       submitToAPI(data)
     }
 
-    setTimeout(() => {updateIsReleased()}, '500')
+    setTimeout(() => {handleUpdate()}, '500')
 
   }
 
@@ -62,7 +62,7 @@ function PostPhotos({currentSlideId, currentUser, updatingIsLeased}) {
       .catch((error) => console.error(error))
   }
 
-  function updateIsReleased() {
+  function handleUpdate() {
     fetch(`/slideshows/${currentSlideId}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
@@ -72,7 +72,7 @@ function PostPhotos({currentSlideId, currentUser, updatingIsLeased}) {
     })
       .then(res => res.json())
       .then(res => {
-        updatingIsLeased(res)
+        updatingIsReleased(res)
         history.push(`/user/${currentUser.id}`)
       })
   }

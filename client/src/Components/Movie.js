@@ -63,6 +63,7 @@ function Movie({currentUser, deleteRendered}) {
       <h5>{slideshow.date}</h5>
       <h5>{slideshow.note}</h5>
       {handleEmptyObject()}
+      <button onClick={() => history.push(`/editfilm/${slideshowId}`)}>Edit</button>
       <button onClick={handleDelete}>Delete</button>
     </MovieContainer>
   )

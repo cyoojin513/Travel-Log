@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useEffect } from 'react'
 import { Route, Switch } from "react-router-dom";
-import { createContext, useState } from 'react'
+import { useState } from 'react'
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import UserPage from "./Components/UserPage";
@@ -9,8 +9,9 @@ import NewFilm from "./Components/NewFilm";
 import NavBar from "./Components/NavBar";
 import PostPhotos from './Components/PostPhotos';
 import Movie from 'Components/Movie';
-
-// export const AppContext = createContext(null);
+import EditFilm from 'Components/EditFilm';
+// Styling
+import { AppContainer } from './Styles/App.style'
 
 function App() {
 
@@ -41,7 +42,7 @@ function App() {
     setSlideshows([...slideshows, newMovie])
   }
 
-  function updatingIsLeased(updatedSlide) {
+  function updatingIsReleased(updatedSlide) {
     const updated = slideshows.map((item) =>{
       if (item.id === updatedSlide.id) {
         return updatedSlide
@@ -55,7 +56,7 @@ function App() {
   }
 
   return (
-    <div>
+    <AppContainer>
       <NavBar currentUser={currentUser} updateUser={updateUser}/>
       <Switch>
         <Route path='/user/:id'>
@@ -71,11 +72,17 @@ function App() {
             getSlideId={getSlideId}  
           />
         </Route>
+        <Route path='/editfilm/:id'>
+          <EditFilm 
+            updatingIsReleased={updatingIsReleased}
+            getSlideId={getSlideId}  
+          />
+        </Route>
         <Route path='/postphotos'>
           <PostPhotos
             currentSlideId={currentSlideId}
             currentUser={currentUser}
-            updatingIsLeased={updatingIsLeased}
+            updatingIsReleased={updatingIsReleased}
           />
         </Route>
         <Route path="/signup">
@@ -85,7 +92,7 @@ function App() {
           <Login updateUser={updateUser} />
         </Route>
       </Switch>
-    </div>
+    </AppContainer>
   );
 }
 

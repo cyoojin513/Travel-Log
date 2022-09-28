@@ -18,27 +18,30 @@ function NewFilm({currentUser, updateSlideshows, getSlideId}) {
   function handleSubmit(e) {
     e.preventDefault()
     const slideshow = {city, country, date, note, user_id: currentUser.id, isReleased: false}
-
-    fetch('/slideshows',{
-      method: 'POST',
-      headers: {"Content-type": "application/json"},
-      body: JSON.stringify(slideshow)
-    }).then(res => {
-      if (res.ok) {
-          res.json().then(slide => {
-            updateSlideshows(slide)
-            getSlideId(slide.id)
-            history.push(`/postphotos`)
-          })
-      } else {
-          res.json().then(json => setErrors(Object.entries(json.errors)))
-      }
-    })
+    handlePost(slideshow, `/postphotos`)
   }
 
   function handleChange(e) {
     const { name, value } = e.target
     setSlideInfo({ ...slideInfo, [name]: value })
+  }
+  
+  function handlePost(item, address) {
+    fetch('/slideshows',{
+      method: 'POST',
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify(item)
+    }).then(res => {
+      if (res.ok) {
+          res.json().then(slide => {
+            updateSlideshows(slide)
+            getSlideId(slide.id)
+            history.push(address)
+          })
+      } else {
+          res.json().then(json => setErrors(Object.entries(json.errors)))
+      }
+    })
   }
 
   return (
