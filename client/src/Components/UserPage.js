@@ -1,11 +1,12 @@
 import React from 'react'
+import { MyPageContainer } from 'Styles/UserPage.style'
 import MovieCard from './MovieCard'
 import PreLeaseCard from './PreLeaseCard'
 
 function UserPage({slideshows}) {
   return (
-    <div>
-      <h1>My Movies</h1>
+    <MyPageContainer>
+      <h1 className='my-movie-title'>My Movies</h1>
       <div>
         {slideshows.map((slide) => slide.isReleased
           ? <MovieCard
@@ -18,7 +19,7 @@ function UserPage({slideshows}) {
           : null
         )}
       </div>
-      <h1>Pre-release Films</h1>
+      <h1 className='pre-release-title'>Pre-release Films</h1>
       <div>
         {slideshows.map((slide) => slide.isReleased
           ? null
@@ -31,7 +32,7 @@ function UserPage({slideshows}) {
             />
         )}
       </div>
-    </div>
+    </MyPageContainer>
   )
 }
 
