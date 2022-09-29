@@ -77,6 +77,13 @@ const MainContainer = styled.div`
     background: #0F0F0F;
     border-radius: 40px;
   }
+
+  .error {
+    color: #8A8A8A;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 14px;
+    margin: 30px 0px 0px 30px
+  }
 `
 
 export { MainContainer }

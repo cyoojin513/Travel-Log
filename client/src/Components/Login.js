@@ -65,9 +65,9 @@ function Login({updateUser}) {
               />
               <input type='submit' value='Log in'/>
             </form>
-            {errors? <div>{errors.map(error => error[1])}</div>:null}
             <Link to={'/signup'} className='signup-link'>Sign up</Link>
           </div>
+          {errors? <div className='error'>{errors.map(error => error[1])}</div>:null}
         </div>
       </MainContainer>
     </div>

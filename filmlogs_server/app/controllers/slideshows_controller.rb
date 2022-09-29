@@ -20,7 +20,22 @@ class SlideshowsController < ApplicationController
   # PATCH '/slideshows/:id'
   def update
     @slideshow.update!(slideshow_params)
-    render json: @slideshow, status: :ok
+    byebug
+    res = RestClient.get(`https://api.geoapify.com/v1/geocode/search?text=#{address_params}m&apiKey=4bf748cc72c4440b8860db33cb8c88fe`)
+    parsedData = JSON.parse(res.body)['features'][0]['properties']
+
+    city = parsedData['city']
+    country = parsedData['country']
+    lon = parsedData['lon']
+    lat = parsedData['lat']
+
+    if parsedData
+      @slideshow.update!(city: city, country: country, lon: lon, lat: lat)
+      render json: @slideshow, status: :ok
+    else
+      render json: { error: 'Please enter a specific address' }, status: :not_found
+    end
+    
   end
 
   # DELETE '/slideshows/:id'
@@ -36,6 +51,17 @@ class SlideshowsController < ApplicationController
   end
 
   def slideshow_params
-    params.permit(:city, :country, :date, :note, :user_id, :isReleased)
+    params.permit(:address, :encodedAddress, :date, :note, :user_id, :isReleased)
+  end
+
+  def address_params
+    params[:encodedAddress]
+  end
+
+  def render_geocode
+    res = RestClient.get('https://api.geoapify.com/v1/geocode/search?text=38%20Upper%20Montagu%20Street%2C%20Westminster%20W1H%201LJ%2C%20United%20Kingdom&apiKey=8f87706a21ef4872afa2c296b4f9d856')
   end
 end
+
+
+# JSON.parse(res.body)['features'][0]['properties']

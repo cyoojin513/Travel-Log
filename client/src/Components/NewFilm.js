@@ -3,13 +3,16 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 function NewFilm({currentUser, updateSlideshows, getSlideId}) {
-  const [ slideInfo, setSlideInfo ] = useState({
-    city:'',
-    country:'',
-    date:'',
-    note:''
-  })
-  const { city, country, date, note } = slideInfo
+  const [ address, setAddress ] = useState("")
+  const [ date, setDate ] = useState("")
+  const [ note, setNote ] = useState("")
+  // const [ slideInfo, setSlideInfo ] = useState(
+  //   {
+  //   address:'',
+  //   date:'',
+  //   note:''
+  // })
+  // const { address, date, note } = slideInfo
   
   const [ errors, setErrors ] = useState([])
   const history = useHistory()
@@ -17,16 +20,26 @@ function NewFilm({currentUser, updateSlideshows, getSlideId}) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    const slideshow = {city, country, date, note, user_id: currentUser.id, isReleased: false}
+
+    const codedAddress = encodeURIComponent(address)
+    const slideshow = {
+      address: address,
+      encodedAddress: codedAddress, 
+      date: date, 
+      note: note, 
+      user_id: currentUser.id,
+      isReleased: false
+    }
     handlePost(slideshow, `/postphotos`)
   }
 
-  function handleChange(e) {
-    const { name, value } = e.target
-    setSlideInfo({ ...slideInfo, [name]: value })
-  }
+
+  // function handleChange(e) {
+  //   const { name, value } = e.target
+  //   setSlideInfo({ ...slideInfo, [name]: value })
+  // }
   
-  function handlePost(item, address) {
+  function handlePost(item, urlAddress) {
     fetch('/slideshows',{
       method: 'POST',
       headers: {"Content-type": "application/json"},
@@ -36,7 +49,7 @@ function NewFilm({currentUser, updateSlideshows, getSlideId}) {
           res.json().then(slide => {
             updateSlideshows(slide)
             getSlideId(slide.id)
-            history.push(address)
+            history.push(urlAddress)
           })
       } else {
           res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -49,31 +62,24 @@ function NewFilm({currentUser, updateSlideshows, getSlideId}) {
       <form onSubmit={(e) => handleSubmit(e)}>
         <input 
           type='text'
-          name='city'
-          placeholder='City' 
-          value={city}
-          onChange={handleChange}
-        />
-        <input 
-          type='text'
-          name='country'
-          placeholder='Country' 
-          value={country}
-          onChange={handleChange}
+          name='address'
+          placeholder='Address' 
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
         <input 
           type='text'
           name='date'
           placeholder='year.month.date' 
           value={date}
-          onChange={handleChange}
+          onChange={(e) => setDate(e.target.value)}
         />
         <input 
           type='text'
           name='note'
           placeholder='Note' 
           value={note}
-          onChange={handleChange}
+          onChange={(e) => setNote(e.target.value)}
         />
         <button type='submit'>Next</button>
       </form>

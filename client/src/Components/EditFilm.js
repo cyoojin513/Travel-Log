@@ -3,13 +3,16 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
 function EditFilm({updatingIsReleased, getSlideId}) {
-  const [ slideInfo, setSlideInfo ] = useState({
-    city:'',
-    country:'',
-    date:'',
-    note:''
-  })
-  // const { city, country, date, note } = slideInfo
+  const [ address, setAddress ] = useState("")
+  const [ date, setDate ] = useState("")
+  const [ note, setNote ] = useState("")
+
+  // const [ slideInfo, setSlideInfo ] = useState({
+  //   address:'',
+  //   encodedAddress:'',
+  //   date:'',
+  //   note:''
+  // })
 
   const [ errors, setErrors ] = useState([])
   const history = useHistory()
@@ -19,20 +22,42 @@ function EditFilm({updatingIsReleased, getSlideId}) {
   useEffect(() => {
     fetch(`/slideshows/${slideshowId}`)
     .then(res => res.json())
-    .then(setSlideInfo)
+    .then(res => {
+      setAddress(res.address)
+      setDate(res.date)
+      setNote(res.note)
+    })
   },[])
 
-  function handleChange(e) {
-    const { name, value } = e.target
-    setSlideInfo({ ...slideInfo, [name]: value })
+  // function handleChange(e) {
+  //   const value = e.target.value
+  //   setSlideInfo({ ...slideInfo,
+  //     [e.target.address]: value,
+  //     encodedAddress: encodeURIComponent(e.target.address.value),
+  //     [e.target.date]: value,
+  //     [e.target.note]: value
+  //   })
+  // }
+
+  function handleSubmit(e){
+    e.preventDefault()
+
+    const codedAddress = encodeURIComponent(address)
+    const slideshow = {
+      address: address,
+      encodedAddress: codedAddress, 
+      date: date, 
+      note: note
+    }
+
+    handlePatch(slideshow)
   }
 
-  function handlePatch(e){
-    e.preventDefault()
+  function handlePatch(item) {
     fetch(`/slideshows/${slideshowId}`,{
       method:'PATCH',
       headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify(slideInfo)
+      body:JSON.stringify(item)
     })
     .then(res => {
       if(res.ok){
@@ -49,34 +74,27 @@ function EditFilm({updatingIsReleased, getSlideId}) {
 
   return (
     <div>
-      <form onSubmit={(e) => handlePatch(e)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input 
           type='text'
-          name='city'
-          placeholder='City' 
-          value={slideInfo.city}
-          onChange={handleChange}
-        />
-        <input 
-          type='text'
-          name='country'
-          placeholder='Country' 
-          value={slideInfo.country}
-          onChange={handleChange}
+          name='address'
+          placeholder='Address' 
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
         <input 
           type='text'
           name='date'
           placeholder='year.month.date' 
-          value={slideInfo.date}
-          onChange={handleChange}
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
         <input 
           type='text'
           name='note'
           placeholder='Note' 
-          value={slideInfo.note}
-          onChange={handleChange}
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
         />
         <button type='submit'>Next</button>
       </form>

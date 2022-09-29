@@ -77,8 +77,8 @@ function Signup({updateUser}) {
               />
               <input type='submit' value='Sign up' />
             </form>
-            {errors? <div>{errors.map(error => <div>{error[0]+': '+ error[1]}</div>)}</div>:null}
           </div>
+          {errors? <div className='error'>{errors.map(error => <div>{error[0]+': '+ error[1]}</div>)}</div>:null}
         </div>
       </MainContainer>
     </div>

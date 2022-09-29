@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 // @ts-nocheck
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
