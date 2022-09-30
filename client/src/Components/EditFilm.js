@@ -6,6 +6,10 @@ function EditFilm({updatingIsReleased, getSlideId}) {
   const [ address, setAddress ] = useState("")
   const [ date, setDate ] = useState("")
   const [ note, setNote ] = useState("")
+  const [ city, setCity ] = useState("")
+  const [ country, setCountry ] = useState("")
+  const [ lon, setLon ] = useState("")
+  const [ lat, setLat ] = useState("")
 
   // const [ slideInfo, setSlideInfo ] = useState({
   //   address:'',
@@ -24,32 +28,40 @@ function EditFilm({updatingIsReleased, getSlideId}) {
     .then(res => res.json())
     .then(res => {
       setAddress(res.address)
+      setCity(res.city)
+      setCountry(res.country)
+      setLon(res.lon)
+      setLat(res.lat)
       setDate(res.date)
       setNote(res.note)
     })
   },[])
 
-  // function handleChange(e) {
-  //   const value = e.target.value
-  //   setSlideInfo({ ...slideInfo,
-  //     [e.target.address]: value,
-  //     encodedAddress: encodeURIComponent(e.target.address.value),
-  //     [e.target.date]: value,
-  //     [e.target.note]: value
-  //   })
-  // }
+  useEffect(() => {
+    if (address) {
+      fetch(`https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(address)}&apiKey=4bf748cc72c4440b8860db33cb8c88fe`)
+        .then(resp => resp.json())
+        .then((res) => {
+          const geocodeResult = res.features[0].properties
+          setCity(geocodeResult.city)
+          setCountry(geocodeResult.country)
+          setLon(geocodeResult.lon)
+          setLat(geocodeResult.lat)
+      })
+    }
+  }, [address])
 
   function handleSubmit(e){
     e.preventDefault()
-
-    const codedAddress = encodeURIComponent(address)
     const slideshow = {
       address: address,
-      encodedAddress: codedAddress, 
+      city: city,
+      country: country,
+      lon: lon,
+      lat: lat,
       date: date, 
       note: note
     }
-
     handlePatch(slideshow)
   }
 

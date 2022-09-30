@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useEffect } from 'react'
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { useState } from 'react'
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
@@ -14,11 +14,26 @@ import LoginError from './Components/LoginError';
 // Styling
 import { AppContainer, SecondRow } from './Styles/App.style'
 
+
 function App() {
 
   const [ currentUser, setCurrentUser ] = useState("")
   const [ slideshows, setSlideshows ] = useState([])
   const [ currentSlideId, setCurrentSlideId ] = useState(null)
+
+  const history = useHistory()
+
+  useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (res.ok) {
+          res.json().then((data) => setCurrentUser(data))
+        } else {
+            history.push('/')
+        }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     fetch('/slideshows')
@@ -36,8 +51,6 @@ function App() {
   function deleteRendered(id) {
     setSlideshows(slideshows?.filter((item) => item.id != id))
   }
-
-  console.log(slideshows)
 
   function updateSlideshows(newMovie) {
     setSlideshows([...slideshows, newMovie])
@@ -58,8 +71,8 @@ function App() {
 
   return (
     <div>
-      {currentUser
-      ? <AppContainer>
+      {/* {currentUser */}
+        <AppContainer>
           <NavBar currentUser={currentUser} updateUser={updateUser}/>
           <SecondRow>
             <Switch>
@@ -89,10 +102,16 @@ function App() {
                   updatingIsReleased={updatingIsReleased}
                 />
               </Route>
+              <Route path="/signup">
+                <Signup updateUser={updateUser} />
+              </Route>
+              <Route exact path="/">
+                <Login updateUser={updateUser} />
+              </Route>
             </Switch>
           </SecondRow>
         </AppContainer>
-      : <Switch>
+      {/* : <Switch>
           <Route path='/user/:id'>
             <LoginError />
           </Route>
@@ -115,7 +134,7 @@ function App() {
             <Login updateUser={updateUser} />
           </Route>
         </Switch>
-      }
+      } */}
       
     </div>
   );

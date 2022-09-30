@@ -48,7 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_200050) do
 
   create_table "slideshows", force: :cascade do |t|
     t.string "address"
-    t.text "encodedAddress"
     t.string "city"
     t.string "country"
     t.float "lon"

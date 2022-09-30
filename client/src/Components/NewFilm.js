@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
@@ -6,25 +6,45 @@ function NewFilm({currentUser, updateSlideshows, getSlideId}) {
   const [ address, setAddress ] = useState("")
   const [ date, setDate ] = useState("")
   const [ note, setNote ] = useState("")
-  // const [ slideInfo, setSlideInfo ] = useState(
-  //   {
-  //   address:'',
-  //   date:'',
-  //   note:''
-  // })
-  // const { address, date, note } = slideInfo
-  
+  const [ city, setCity ] = useState("")
+  const [ country, setCountry ] = useState("")
+  const [ lon, setLon ] = useState("")
+  const [ lat, setLat ] = useState("")
+
   const [ errors, setErrors ] = useState([])
   const history = useHistory()
 
+  // function getGeocode() {
+  //   const url = 'https://geocode.search.hereapi.com/v1/geocode?q=' + address + '&gen=9apiKey=_UflM7c4oF5vFzs30fh5ZNLsEmovcCI6tSagg2YLaSM'
+  //   const xmlHttp = new XMLHttpRequest()
+  //   xmlHttp.open("GET", url, false)
+  //   xmlHttp.send(null)
+  //   const json = JSON.parse(xmlHttp.responseText)
+  //   console.log(json)
+  // }
+
+  useEffect(() => {
+    if (address) {
+      fetch(`https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(address)}&apiKey=4bf748cc72c4440b8860db33cb8c88fe`)
+        .then(resp => resp.json())
+        .then((res) => {
+          const geocodeResult = res.features[0].properties
+          setCity(geocodeResult.city)
+          setCountry(geocodeResult.country)
+          setLon(geocodeResult.lon)
+          setLat(geocodeResult.lat)
+      })
+    }
+  }, [address])
 
   function handleSubmit(e) {
     e.preventDefault()
-
-    const codedAddress = encodeURIComponent(address)
     const slideshow = {
       address: address,
-      encodedAddress: codedAddress, 
+      city: city,
+      country: country,
+      lon: lon,
+      lat: lat,
       date: date, 
       note: note, 
       user_id: currentUser.id,
@@ -33,12 +53,6 @@ function NewFilm({currentUser, updateSlideshows, getSlideId}) {
     handlePost(slideshow, `/postphotos`)
   }
 
-
-  // function handleChange(e) {
-  //   const { name, value } = e.target
-  //   setSlideInfo({ ...slideInfo, [name]: value })
-  // }
-  
   function handlePost(item, urlAddress) {
     fetch('/slideshows',{
       method: 'POST',
