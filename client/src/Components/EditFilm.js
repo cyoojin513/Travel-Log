@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
-function EditFilm({updatingIsReleased, getSlideId}) {
+function EditFilm({currentUser, updatingIsReleased, getSlideId}) {
+  
   const [ address, setAddress ] = useState("")
   const [ date, setDate ] = useState("")
   const [ note, setNote ] = useState("")
@@ -11,17 +12,20 @@ function EditFilm({updatingIsReleased, getSlideId}) {
   const [ lon, setLon ] = useState("")
   const [ lat, setLat ] = useState("")
 
-  // const [ slideInfo, setSlideInfo ] = useState({
-  //   address:'',
-  //   encodedAddress:'',
-  //   date:'',
-  //   note:''
-  // })
-
   const [ errors, setErrors ] = useState([])
   const history = useHistory()
   const params = useParams()
   const slideshowId = params.id
+
+  useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (!res.ok) {
+            history.push('/loginerror')
+        }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     fetch(`/slideshows/${slideshowId}`)

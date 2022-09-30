@@ -1,9 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import { MovieContainer, PreReleaseContainer , CardContainer } from 'Styles/UserPage.style'
 import MovieCard from './MovieCard'
 import PreLeaseCard from './PreLeaseCard'
 
-function UserPage({slideshows}) {
+function UserPage({currentUser, slideshows}) {
+
+  const history = useHistory()
+
+  useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (!res.ok) {
+            history.push('/loginerror')
+        }
+      })
+    }
+  }, [])
+
   return (
     <div>
       <MovieContainer>
@@ -17,7 +31,7 @@ function UserPage({slideshows}) {
                 country = {slide.country}
                 date = {slide.date}
               />
-            : null
+            : <h1 className='no-content'></h1>
           )}
         </CardContainer>
       </MovieContainer>

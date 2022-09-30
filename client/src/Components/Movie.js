@@ -13,6 +13,16 @@ function Movie({currentUser, deleteRendered}) {
   const slideshowId = params.id
 
   useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (!res.ok) {
+            history.push('/loginerror')
+        }
+      })
+    }
+  }, [])
+
+  useEffect(() => {
     fetch(`/slideshows/${slideshowId}`)
     .then((res) => {
       if (res.ok) {

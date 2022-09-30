@@ -28,12 +28,11 @@ function App() {
       fetch('/me').then((res) => {
         if (res.ok) {
           res.json().then((data) => setCurrentUser(data))
-        } else {
-            history.push('/')
         }
       })
     }
   }, [])
+
 
   useEffect(() => {
     fetch('/slideshows')
@@ -77,7 +76,7 @@ function App() {
           <SecondRow>
             <Switch>
               <Route path='/user/:id'>
-                <UserPage slideshows={slideshows}/>
+                <UserPage currentUser={currentUser} slideshows={slideshows}/>
               </Route>
               <Route path='/movie/:id'>
                 <Movie currentUser={currentUser} deleteRendered={deleteRendered}/>
@@ -91,6 +90,7 @@ function App() {
               </Route>
               <Route path='/editfilm/:id'>
                 <EditFilm 
+                  currentUser={currentUser}
                   updatingIsReleased={updatingIsReleased}
                   getSlideId={getSlideId}  
                 />
@@ -101,6 +101,9 @@ function App() {
                   currentUser={currentUser}
                   updatingIsReleased={updatingIsReleased}
                 />
+              </Route>
+              <Route path='/loginerror'>
+                <LoginError />
               </Route>
               <Route path="/signup">
                 <Signup updateUser={updateUser} />

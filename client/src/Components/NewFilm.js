@@ -14,14 +14,15 @@ function NewFilm({currentUser, updateSlideshows, getSlideId}) {
   const [ errors, setErrors ] = useState([])
   const history = useHistory()
 
-  // function getGeocode() {
-  //   const url = 'https://geocode.search.hereapi.com/v1/geocode?q=' + address + '&gen=9apiKey=_UflM7c4oF5vFzs30fh5ZNLsEmovcCI6tSagg2YLaSM'
-  //   const xmlHttp = new XMLHttpRequest()
-  //   xmlHttp.open("GET", url, false)
-  //   xmlHttp.send(null)
-  //   const json = JSON.parse(xmlHttp.responseText)
-  //   console.log(json)
-  // }
+  useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (!res.ok) {
+            history.push('/loginerror')
+        }
+      })
+    }
+  }, [])
 
   useEffect(() => {
     if (address) {
