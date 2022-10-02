@@ -70,7 +70,6 @@ function App() {
 
   return (
     <div>
-      {/* {currentUser */}
         <AppContainer>
           <NavBar currentUser={currentUser} updateUser={updateUser}/>
           <SecondRow>
@@ -114,31 +113,6 @@ function App() {
             </Switch>
           </SecondRow>
         </AppContainer>
-      {/* : <Switch>
-          <Route path='/user/:id'>
-            <LoginError />
-          </Route>
-          <Route path='/movie/:id'>
-            <LoginError />
-          </Route>
-          <Route path='/newfilm'>
-            <LoginError />
-          </Route>
-          <Route path='/editfilm/:id'>
-            <LoginError />
-          </Route>
-          <Route path='/postphotos'>
-            <LoginError />
-          </Route>
-          <Route path="/signup">
-            <Signup updateUser={updateUser} />
-          </Route>
-          <Route exact path="/">
-            <Login updateUser={updateUser} />
-          </Route>
-        </Switch>
-      } */}
-      
     </div>
   );
 }

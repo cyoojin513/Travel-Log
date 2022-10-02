@@ -1,45 +1,71 @@
-import React from 'react'
+// @ts-nocheck
+import React, { useRef, useEffect } from 'react'
 import mapboxgl from 'mapbox-gl'
-import { MapContainer } from 'Styles/Map.style'
+import { MapContainerStyle } from 'Styles/Map.style'
 
 mapboxgl.accessToken='pk.eyJ1IjoiY3lvb2ppbjUxMyIsImEiOiJjbDhvd3VtdjgwMXc2M29xbWVxOTNmMXhnIn0.lf4m7kWS3gbVN6BWe9kOBA'
 
-// function MapCard() {
-//   return (
-//     <div>MapCard</div>
-//   )
-// }
 
-// export default MapCard
+function MapCard({movie}) {
 
-class Mapp extends React.Component{
+  const mapContainer = useRef()
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      lng:-98.676392,
-      lat:39.106667,
-      zoom:2
+  useEffect(() => {
+    if (movie !== []) {
+    function handleMarkers() {
+      let object = []
+      for (let i = 0; i < movie.length; i++) {
+        const array = {
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [movie[i].lon, movie[i].lat]
+          }
+        }
+        object.push(array) 
+      }
+      console.log(object)
+      return object
     }
-  }
 
-  componentDidMount() {
+    
     const map = new mapboxgl.Map({
-      container: this.mapContainer,
+      container: mapContainer.current,
       style: 'mapbox://styles/cyoojin513/cl8q8k0yf006615mv5q0njtfk',
-      center: [this.state.lng, this.state.lat],
-      zoom: this.state.zoom,
+      center: [-98.676392, 39.106667],
+      zoom: 2,
       attributionControl: false
     })
-  }
 
-  render(){
-		return(
-			<MapContainer>
-				<div ref={el => this.mapContainer = el} style={{width:'100%', height:'80vh'}}/>
-			</MapContainer>
-		)
-	}
+    map.on('load', () => {
+      map.addSource('mapcard', {
+        'type': 'geojson',
+        'data': {
+          'type': 'FeatureCollection',
+          'features':  handleMarkers()
+        }
+      })
+
+      map.addLayer({
+        'id': 'dots',
+        'type': 'circle',
+        'source': 'mapcard',
+        'paint': {
+          'circle-color': 'red',
+          'circle-radius': 6,
+        }
+      })
+    })
+    }
+  }, [])
+
+
+
+ return (
+  <MapContainerStyle>
+    <div ref={mapContainer} className='map-container' style={{width:'100%', height:'80vh'}}></div>
+  </MapContainerStyle>
+ )
 }
 
-export default Mapp;
+export default MapCard
