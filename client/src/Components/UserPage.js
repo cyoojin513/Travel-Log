@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
+import MovieCard from './MovieCard'
 import PreLeaseCard from './PreLeaseCard'
 import MapCard from './MapCard'
 // Styling
@@ -24,12 +25,13 @@ function UserPage({currentUser, slideshows}) {
   return (
     <div>
       <MovieContainer>
-        <h1 className='my-movie-title'>My Movies</h1>
+        <h1 className='my-movie-title'></h1>
         <MapCard movie={releasedMovie}/>
       </MovieContainer>
       <PreReleaseContainer>
           <h1 className='pre-release-title'>Pre-release Films</h1>
           <CardContainer>
+            <div className='card-grid'>
             {slideshows.map((slide) => slide.isReleased
               ? null
               : <PreLeaseCard
@@ -40,6 +42,7 @@ function UserPage({currentUser, slideshows}) {
                   date = {slide.date}
                 />
             )}
+            </div>
         </CardContainer>
       </PreReleaseContainer>
     </div>

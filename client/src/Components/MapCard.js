@@ -1,34 +1,44 @@
 // @ts-nocheck
 import React, { useRef, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import mapboxgl from 'mapbox-gl'
+import MovieCard from './MovieCard'
+// Styling
 import { MapContainerStyle } from 'Styles/Map.style'
 
 mapboxgl.accessToken='pk.eyJ1IjoiY3lvb2ppbjUxMyIsImEiOiJjbDhvd3VtdjgwMXc2M29xbWVxOTNmMXhnIn0.lf4m7kWS3gbVN6BWe9kOBA'
 
-
 function MapCard({movie}) {
 
   const mapContainer = useRef()
+  const history = useHistory()
 
   useEffect(() => {
-    if (movie !== []) {
     function handleMarkers() {
       let object = []
       for (let i = 0; i < movie.length; i++) {
+        const data = movie[i]
         const array = {
           'type': 'Feature',
+          'properties': {
+            'description': 
+              `<div>
+                <h3>${data.city}</h3>
+                <h4>${data.country}</h4>
+                <h5>${data.date}</h5>
+                <a href="/movie/${data.id}">Watch film</a>
+              </div>`
+          },
           'geometry': {
             'type': 'Point',
-            'coordinates': [movie[i].lon, movie[i].lat]
+            'coordinates': [data.lon, data.lat]
           }
         }
         object.push(array) 
       }
-      console.log(object)
       return object
     }
 
-    
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/cyoojin513/cl8q8k0yf006615mv5q0njtfk',
@@ -55,14 +65,36 @@ function MapCard({movie}) {
           'circle-radius': 6,
         }
       })
+
+      map.on('click', 'dots', (e) => {
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.description;
+
+        new mapboxgl.Popup({
+          offset: { 'bottom': [0, -10] },
+        })
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+      })
+
+      map.on('mouseenter', 'dots', () => {
+        map.getCanvas().style.cursor = 'pointer'
+        })
+  
+      map.on('mouseleave', 'dots', () => {
+        map.getCanvas().style.cursor = ''
+        })
     })
-    }
+
+    console.log('Map useEffect')
   }, [])
 
 
 
  return (
   <MapContainerStyle>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet"/>
     <div ref={mapContainer} className='map-container' style={{width:'100%', height:'80vh'}}></div>
   </MapContainerStyle>
  )

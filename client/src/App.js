@@ -1,6 +1,6 @@
 // @ts-nocheck
-import React, { useEffect } from 'react'
-import { Route, Switch, useHistory } from "react-router-dom";
+import React, { useEffect, useLayoutEffect } from 'react'
+import { Route, Switch } from "react-router-dom";
 import { useState } from 'react'
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
@@ -21,8 +21,6 @@ function App() {
   const [ slideshows, setSlideshows ] = useState([])
   const [ currentSlideId, setCurrentSlideId ] = useState(null)
 
-  const history = useHistory()
-
   useEffect(() => {
     if (!currentUser) {
       fetch('/me').then((res) => {
@@ -33,14 +31,14 @@ function App() {
     }
   }, [])
 
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch('/slideshows')
     .then((res) => {
       if (res.ok) {
         res.json().then((data) => setSlideshows(data))
       }
     })
+    console.log('App useLayoutEffect')
   }, [ currentUser ])
 
   function updateUser(user) {
