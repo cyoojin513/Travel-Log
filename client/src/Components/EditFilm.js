@@ -2,14 +2,15 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
-function EditFilm({updatingIsReleased, getSlideId}) {
-  const [ slideInfo, setSlideInfo ] = useState({
-    city:'',
-    country:'',
-    date:'',
-    note:''
-  })
-  // const { city, country, date, note } = slideInfo
+function EditFilm({currentUser, updatingIsReleased, getSlideId}) {
+  
+  const [ address, setAddress ] = useState("")
+  const [ date, setDate ] = useState("")
+  const [ note, setNote ] = useState("")
+  const [ city, setCity ] = useState("")
+  const [ country, setCountry ] = useState("")
+  const [ lon, setLon ] = useState("")
+  const [ lat, setLat ] = useState("")
 
   const [ errors, setErrors ] = useState([])
   const history = useHistory()
@@ -17,22 +18,62 @@ function EditFilm({updatingIsReleased, getSlideId}) {
   const slideshowId = params.id
 
   useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (!res.ok) {
+            history.push('/loginerror')
+        }
+      })
+    }
+  }, [])
+
+  useEffect(() => {
     fetch(`/slideshows/${slideshowId}`)
     .then(res => res.json())
-    .then(setSlideInfo)
+    .then(res => {
+      setAddress(res.address)
+      setCity(res.city)
+      setCountry(res.country)
+      setLon(res.lon)
+      setLat(res.lat)
+      setDate(res.date)
+      setNote(res.note)
+    })
   },[])
 
-  function handleChange(e) {
-    const { name, value } = e.target
-    setSlideInfo({ ...slideInfo, [name]: value })
+  useEffect(() => {
+    if (address) {
+      fetch(`https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(address)}&apiKey=4bf748cc72c4440b8860db33cb8c88fe`)
+        .then(resp => resp.json())
+        .then((res) => {
+          const geocodeResult = res.features[0].properties
+          setCity(geocodeResult.city)
+          setCountry(geocodeResult.country)
+          setLon(geocodeResult.lon)
+          setLat(geocodeResult.lat)
+      })
+    }
+  }, [address])
+
+  function handleSubmit(e){
+    e.preventDefault()
+    const slideshow = {
+      address: address,
+      city: city,
+      country: country,
+      lon: lon,
+      lat: lat,
+      date: date, 
+      note: note
+    }
+    handlePatch(slideshow)
   }
 
-  function handlePatch(e){
-    e.preventDefault()
+  function handlePatch(item) {
     fetch(`/slideshows/${slideshowId}`,{
       method:'PATCH',
       headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify(slideInfo)
+      body:JSON.stringify(item)
     })
     .then(res => {
       if(res.ok){
@@ -49,34 +90,27 @@ function EditFilm({updatingIsReleased, getSlideId}) {
 
   return (
     <div>
-      <form onSubmit={(e) => handlePatch(e)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input 
           type='text'
-          name='city'
-          placeholder='City' 
-          value={slideInfo.city}
-          onChange={handleChange}
-        />
-        <input 
-          type='text'
-          name='country'
-          placeholder='Country' 
-          value={slideInfo.country}
-          onChange={handleChange}
+          name='address'
+          placeholder='Address' 
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
         <input 
           type='text'
           name='date'
           placeholder='year.month.date' 
-          value={slideInfo.date}
-          onChange={handleChange}
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
         <input 
           type='text'
           name='note'
           placeholder='Note' 
-          value={slideInfo.note}
-          onChange={handleChange}
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
         />
         <button type='submit'>Next</button>
       </form>

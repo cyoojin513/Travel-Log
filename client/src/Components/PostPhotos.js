@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 // @ts-nocheck
-import React, { useRef, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
@@ -9,6 +9,16 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
   const [selectedImages, setSelectedImages] = useState([])
 
   const history = useHistory()
+
+  useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (!res.ok) {
+            history.push('/loginerror')
+        }
+      })
+    }
+  }, [])
 
   function imageHandleChange(e) {
     if(e.target.files) {
@@ -48,9 +58,7 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
       data.append("slideshow_id", currentSlideId)
       submitToAPI(data)
     }
-
     setTimeout(() => {handleUpdate()}, '500')
-
   }
 
   function submitToAPI(data) {

@@ -10,9 +10,11 @@ function NavBar({ currentUser, updateUser }) {
   const handleLogOut = () => {
     fetch('/logout', {
         method: 'DELETE'
-    })
-    updateUser("")
-    history.push('/')
+    }).then(() => {
+        updateUser("")
+        history.push('/')
+        }
+      )
   }
 
   return (

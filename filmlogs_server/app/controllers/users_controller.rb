@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: :create
 
-  # GET '/users'
+  # GET '/users/:id'
   def show 
-      user = User.find(params[:id])
-      render json: user, status: :ok
+    #   user = User.find(params[:id])
+      render json: current_user, status: :ok
   end 
 
   # POST '/users'

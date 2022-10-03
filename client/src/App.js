@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { Route, Switch } from "react-router-dom";
 import { useState } from 'react'
 import Signup from "./Components/Signup";
@@ -14,6 +14,7 @@ import LoginError from './Components/LoginError';
 // Styling
 import { AppContainer, SecondRow } from './Styles/App.style'
 
+
 function App() {
 
   const [ currentUser, setCurrentUser ] = useState("")
@@ -21,12 +22,23 @@ function App() {
   const [ currentSlideId, setCurrentSlideId ] = useState(null)
 
   useEffect(() => {
+    if (!currentUser) {
+      fetch('/me').then((res) => {
+        if (res.ok) {
+          res.json().then((data) => setCurrentUser(data))
+        }
+      })
+    }
+  }, [])
+
+  useLayoutEffect(() => {
     fetch('/slideshows')
     .then((res) => {
       if (res.ok) {
         res.json().then((data) => setSlideshows(data))
       }
     })
+    console.log('App useLayoutEffect')
   }, [ currentUser ])
 
   function updateUser(user) {
@@ -36,8 +48,6 @@ function App() {
   function deleteRendered(id) {
     setSlideshows(slideshows?.filter((item) => item.id != id))
   }
-
-  console.log(slideshows)
 
   function updateSlideshows(newMovie) {
     setSlideshows([...slideshows, newMovie])
@@ -58,13 +68,12 @@ function App() {
 
   return (
     <div>
-      {currentUser
-      ? <AppContainer>
+        <AppContainer>
           <NavBar currentUser={currentUser} updateUser={updateUser}/>
           <SecondRow>
             <Switch>
               <Route path='/user/:id'>
-                <UserPage slideshows={slideshows}/>
+                <UserPage currentUser={currentUser} slideshows={slideshows}/>
               </Route>
               <Route path='/movie/:id'>
                 <Movie currentUser={currentUser} deleteRendered={deleteRendered}/>
@@ -78,6 +87,7 @@ function App() {
               </Route>
               <Route path='/editfilm/:id'>
                 <EditFilm 
+                  currentUser={currentUser}
                   updatingIsReleased={updatingIsReleased}
                   getSlideId={getSlideId}  
                 />
@@ -89,34 +99,18 @@ function App() {
                   updatingIsReleased={updatingIsReleased}
                 />
               </Route>
+              <Route path='/loginerror'>
+                <LoginError />
+              </Route>
+              <Route path="/signup">
+                <Signup updateUser={updateUser} />
+              </Route>
+              <Route exact path="/">
+                <Login updateUser={updateUser} />
+              </Route>
             </Switch>
           </SecondRow>
         </AppContainer>
-      : <Switch>
-          <Route path='/user/:id'>
-            <LoginError />
-          </Route>
-          <Route path='/movie/:id'>
-            <LoginError />
-          </Route>
-          <Route path='/newfilm'>
-            <LoginError />
-          </Route>
-          <Route path='/editfilm/:id'>
-            <LoginError />
-          </Route>
-          <Route path='/postphotos'>
-            <LoginError />
-          </Route>
-          <Route path="/signup">
-            <Signup updateUser={updateUser} />
-          </Route>
-          <Route exact path="/">
-            <Login updateUser={updateUser} />
-          </Route>
-        </Switch>
-      }
-      
     </div>
   );
 }

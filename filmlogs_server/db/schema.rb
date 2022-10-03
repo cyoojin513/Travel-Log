@@ -47,8 +47,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_200050) do
   end
 
   create_table "slideshows", force: :cascade do |t|
+    t.string "address"
     t.string "city"
     t.string "country"
+    t.float "lon"
+    t.float "lat"
     t.string "date"
     t.text "note"
     t.boolean "isReleased"

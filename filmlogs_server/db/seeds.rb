@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+print "seeding..."
+
+# Slideshow.create(
+#   encodedAddress: "38%20Upper%20Montagu%20Street%2C%20Westminster%20W1H%201LJ%2C%20United%20Kingdom",
+#   date: "2019.12.25",
+#   user_id: 1,
+#   isReleased: false
+# )
+
+print "Done seeding!"
