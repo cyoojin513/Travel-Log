@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+// Styling
 import { MovieContainer } from '../Styles/Movie.style'
 
 function Movie({currentUser, deleteRendered}) {

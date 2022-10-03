@@ -1,17 +1,15 @@
 // @ts-nocheck
 import React, { useRef, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import mapboxgl from 'mapbox-gl'
-import MovieCard from './MovieCard'
+import camera_icon from '../Images/camera_icon.png'
 // Styling
-import { MapContainerStyle } from 'Styles/Map.style'
+import { MapContainerStyle, Alert } from 'Styles/Map.style'
 
 mapboxgl.accessToken='pk.eyJ1IjoiY3lvb2ppbjUxMyIsImEiOiJjbDhvd3VtdjgwMXc2M29xbWVxOTNmMXhnIn0.lf4m7kWS3gbVN6BWe9kOBA'
 
 function MapCard({movie}) {
 
   const mapContainer = useRef()
-  const history = useHistory()
 
   useEffect(() => {
     function handleMarkers() {
@@ -90,13 +88,14 @@ function MapCard({movie}) {
     console.log('Map useEffect')
   }, [])
 
-
-
  return (
-  <MapContainerStyle>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet"/>
-    <div ref={mapContainer} className='map-container' style={{width:'100%', height:'80vh'}}></div>
-  </MapContainerStyle>
+  <div>
+    <Alert><img src={camera_icon} id='icon' alt='icon'/><h3>Click New Film to create a movie</h3></Alert>
+    <MapContainerStyle>
+      <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet"/>
+      <div ref={mapContainer} className='map-container' style={{width:'100%', height:'80vh'}}></div>
+    </MapContainerStyle>
+  </div>
  )
 }
 
