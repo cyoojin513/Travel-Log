@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import MovieCard from './MovieCard'
 import PreLeaseCard from './PreLeaseCard'
 import MapCard from './MapCard'
 // Styling
-import { MovieContainer, PreReleaseContainer , CardContainer } from 'Styles/UserPage.style'
+import { MovieContainer, PreReleaseContainer, CardContainer, AlertStyling } from 'Styles/UserPage.style'
 
 function UserPage({currentUser, slideshows}) {
 
@@ -23,7 +22,7 @@ function UserPage({currentUser, slideshows}) {
   const releasedMovie = slideshows.filter((item) => item.isReleased)
 
   return (
-    <div>
+    <AlertStyling>
       <MovieContainer>
         <h1 className='my-movie-title'></h1>
         <MapCard movie={releasedMovie}/>
@@ -45,7 +44,7 @@ function UserPage({currentUser, slideshows}) {
             </div>
         </CardContainer>
       </PreReleaseContainer>
-    </div>
+    </AlertStyling>
   )
 }
 

@@ -80,4 +80,8 @@ const CardStyle = styled.div`
   }
 `
 
-export { MovieContainer, PreReleaseContainer, CardContainer, CardStyle }
+const AlertStyling = styled.div`
+  position: relative;
+`
+
+export { MovieContainer, PreReleaseContainer, CardContainer, CardStyle, AlertStyling }

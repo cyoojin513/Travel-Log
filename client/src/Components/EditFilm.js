@@ -1,6 +1,8 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+// Styling
+import { FormContainer, Error } from '../Styles/NewFilm.style'
 
 function EditFilm({currentUser, updatingIsReleased, getSlideId}) {
   
@@ -90,31 +92,39 @@ function EditFilm({currentUser, updatingIsReleased, getSlideId}) {
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input 
-          type='text'
-          name='address'
-          placeholder='Address' 
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <input 
-          type='text'
-          name='date'
-          placeholder='year.month.date' 
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <input 
-          type='text'
-          name='note'
-          placeholder='Note' 
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-        />
-        <button type='submit'>Next</button>
-      </form>
-      {errors? errors.map(error => <div> {error[0]} {error[1]} </div>) :null}
+      {errors? errors.map(error => <Error><div className='error-text'> {error[0]} {error[1]} </div></Error>) :null}
+      <FormContainer>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className='first-row'>
+            <input 
+              type='text'
+              name='address'
+              placeholder='Address' 
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+            <input 
+              type='text'
+              name='date'
+              placeholder='Year.month.date' 
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+          <div className='second-row'>
+            <textarea 
+              name='note'
+              placeholder='Travel note' 
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+            />
+          </div>
+          <div className='edit-button-grid'>
+            <button className='back' onClick={() => history.push(`/user/${currentUser.id}`)}>Back to my page</button>
+            <button className='submit' type='submit'>Next</button>
+          </div>
+        </form>
+      </FormContainer>
     </div>
   )
 }

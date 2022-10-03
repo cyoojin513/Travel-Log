@@ -1,5 +1,8 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import Airplane from '../Sounds/Airplane.mp3'
+// Styling
 import { MainContainer } from '../Styles/Login.style'
 
 function Login({updateUser}) {
@@ -29,6 +32,9 @@ function Login({updateUser}) {
         res.json().then(user => {
           updateUser(user)
           console.log("Login successfully!")
+          const audio = new Audio(Airplane)
+          audio.volume = 0.2
+          audio.play()
           history.push(`/user/${user.id}`)
         })
       }else {
