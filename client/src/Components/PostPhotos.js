@@ -2,11 +2,14 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Error } from '../Styles/NewFilm.style'
+// Styling
 import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
 function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
   
-  const [selectedImages, setSelectedImages] = useState([])
+  const [ selectedImages, setSelectedImages ] = useState([])
+  const [ error, setError ] = useState("")
 
   const history = useHistory()
 
@@ -58,7 +61,7 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
       data.append("slideshow_id", currentSlideId)
       submitToAPI(data)
     }
-    setTimeout(() => {handleUpdate()}, '500')
+    setTimeout(() => {handleUpdate(data)}, '500')
   }
 
   function submitToAPI(data) {
@@ -70,23 +73,26 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
       .catch((error) => console.error(error))
   }
 
-  function handleUpdate() {
-    fetch(`/slideshows/${currentSlideId}`, {
-      method: 'PATCH',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        isReleased: true
+  function handleUpdate(data) {
+    if (data) {
+      fetch(`/slideshows/${currentSlideId}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          isReleased: true
+        })
       })
-    })
-      .then(res => res.json())
-      .then(res => {
-        updatingIsReleased(res)
-        history.push(`/user/${currentUser.id}`)
-      })
+        .then(res => res.json())
+        .then(res => {
+          updatingIsReleased(res)
+          history.push(`/user/${currentUser.id}`)
+        })
+    } else {setError("Please submit photos")}
   }
 
   return (
     <PostPhotoContainer>
+      {error ? <Error><div className='error-text'>{error}</div></Error> : null}
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className='first-row'>
           <h2>Select multiple photos</h2>

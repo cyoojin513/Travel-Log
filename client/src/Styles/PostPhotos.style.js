@@ -8,7 +8,6 @@ const PostPhotoContainer = styled.div`
 
   .first-row {
     display: flex;
-    justify-content: center;
     grid-row: 1;
     grid-template-columns: 1fr 1fr;
     justify-content: center;

@@ -73,7 +73,11 @@ function App() {
           <SecondRow>
             <Switch>
               <Route path='/user/:id'>
-                <UserPage currentUser={currentUser} slideshows={slideshows}/>
+                <UserPage 
+                  currentUser={currentUser} 
+                  slideshows={slideshows}
+                  deleteRendered={deleteRendered}
+                />
               </Route>
               <Route path='/movie/:id'>
                 <Movie currentUser={currentUser} deleteRendered={deleteRendered}/>

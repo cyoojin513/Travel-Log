@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 const MovieContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto 300px 30px 300px 30px auto;
   color: #8A8A8A;
 
   .slideshow {

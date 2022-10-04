@@ -45,11 +45,9 @@ const CardContainer = styled.div`
 
 const CardStyle = styled.div`
   display: grid;
-  grid-template-rows: 100px 30px 20px 50px;
-  width: 95%;
-  max-width: 150px;
-  min-width: 110px;
-  max-height: 200px;
+  grid-template-rows: 100px 20px;
+  width: 150px;
+  height: 200px;
   margin-left: 16px;
   background-color: #171717;
   border-radius: 20px;
@@ -59,8 +57,22 @@ const CardStyle = styled.div`
   background-color: #0F0F0F;
   }
 
+  .city-delete-container {
+    display: grid;
+    grid-row: 1;
+    grid-template-columns: 100px 50px;
+
+    h5 {
+      font-family: 'Gill Sans', sans-serif;
+      color: #8A8A8A;
+      text-align: right;
+      margin: 10px 10px 73px 28px;
+      cursor: pointer;
+    }
+  }
+
   h3 {
-    margin: 20px 0px 0px 15px;
+    margin: 25px 0px 0px 15px;
     font-family: "Gill Sans", sans-serif;
     font-size: 20px;
     font-weight: 100;
@@ -70,13 +82,24 @@ const CardStyle = styled.div`
   h4 {
     font-family: "Gill Sans", sans-serif;
     font-size: 8pt;
-    margin: 35px 0px 0px 15px;
+    margin: 15px 0px 0px 15px;
   }
 
   h5 {
     font-family: "Gill Sans", sans-serif;
     font-size: 8pt;
-    margin: 23px 0px 0px 15px;
+    margin: 15px 0px 0px 15px;
+  }
+
+  .edit {
+    margin: 0px 100px 15px 15px;
+    color: #747474;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+    color: #FF1900;
+    }
   }
 `
 

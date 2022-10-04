@@ -47,7 +47,7 @@ function Movie({currentUser, deleteRendered}) {
   }
 
   function handleEmptyObject() {
-    return photoObject ? photoUrls() : null 
+    return photoObject ? photoUrls() : <h5>Please edit photos</h5> 
   }
 
   function handleDelete() {
@@ -71,11 +71,11 @@ function Movie({currentUser, deleteRendered}) {
     <MovieContainer>
       <h3>{slideshow.city}</h3>
       <h5>{slideshow.country}</h5>
-      <h5>{slideshow.date}</h5>
       <h5>{slideshow.note}</h5>
-      {handleEmptyObject()}
       <button onClick={() => history.push(`/editfilm/${slideshowId}`)}>Edit</button>
       <button onClick={handleDelete}>Delete</button>
+      {handleEmptyObject()}
+      <h5>{slideshow.date}</h5>
     </MovieContainer>
   )
 }

@@ -113,8 +113,7 @@ const FormContainer = styled.div`
 
 const Error = styled.div`
   margin-top: 5px;
-  justify-content: center;
-  align-items: center;
+  margin-left: 65px;
 
   .error-text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

@@ -5,7 +5,7 @@ import MapCard from './MapCard'
 // Styling
 import { MovieContainer, PreReleaseContainer, CardContainer, AlertStyling } from 'Styles/UserPage.style'
 
-function UserPage({currentUser, slideshows}) {
+function UserPage({currentUser, slideshows, deleteRendered}) {
 
   const history = useHistory()
 
@@ -39,6 +39,7 @@ function UserPage({currentUser, slideshows}) {
                 city = {slide.city}
                 country = {slide.country}
                 date = {slide.date}
+                deleteRendered = {deleteRendered}
               />
           )}
           </div>
