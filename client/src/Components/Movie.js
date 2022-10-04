@@ -33,21 +33,25 @@ function Movie({currentUser, deleteRendered}) {
   }, [])
 
   const photoObject = slideshow.photos
+  console.log(photoObject)
 
   function photoUrls() {
       if (photoObject.length == 1) {
         return <img src={photoObject[0].image_url} className='slideshow' alt='slide' key={0}/>
       } else if (photoObject.length == 0) {
-          return null
+          return <h5>Please add photos</h5> 
       } else { 
-          return photoObject.map((i) => 
-            <img src={i.image_url} className='slideshow' alt='slide' key={i.index}/>
-          )
+          // return photoObject.map((i) => 
+          //   <img src={i.image_url} className='slideshow' alt='slide' key={i.index}/>
+          // )
+
       }
   }
 
-  function handleEmptyObject() {
-    return photoObject ? photoUrls() : <h5>Please edit photos</h5> 
+  function 
+
+  function renderSlideshow() {
+    return photoObject ? photoUrls() : <h5>Please add photos</h5> 
   }
 
   function handleDelete() {
@@ -69,13 +73,19 @@ function Movie({currentUser, deleteRendered}) {
 
   return (
     <MovieContainer>
-      <h3>{slideshow.city}</h3>
-      <h5>{slideshow.country}</h5>
-      <h5>{slideshow.note}</h5>
-      <button onClick={() => history.push(`/editfilm/${slideshowId}`)}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
-      {handleEmptyObject()}
-      <h5>{slideshow.date}</h5>
+      <div className='center-grid'>
+        <div className='first-column'>
+          <h3>{slideshow.city}</h3>
+          <h5>{slideshow.country}</h5>
+          <h5>{slideshow.note}</h5>
+        </div>
+        <div className='second-column'>
+          <button onClick={() => history.push(`/editfilm/${slideshowId}`)}>Edit</button>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
+        {renderSlideshow()}
+        <h5>{slideshow.date}</h5>
+      </div>
     </MovieContainer>
   )
 }

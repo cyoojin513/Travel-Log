@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
+import filmlogs_logo from '../Images/filmlogs_logo.png'
 // Styling
-import { NavContainer } from '../Styles/Nav.style'
+import { NavContainer, Logo } from '../Styles/Nav.style'
 
 function NavBar({ currentUser, updateUser }) {
 
@@ -19,7 +20,9 @@ function NavBar({ currentUser, updateUser }) {
 
   return (
     <NavContainer>
-      <p>Logo</p>
+      <Logo as={NavLink} exact to = {`/user/${currentUser.id}`}>
+        <img src={filmlogs_logo} alt='logo'/>
+      </Logo>
       {currentUser ? <NavLink exact to = {`/user/${currentUser.id}`}>My Page</NavLink> : null}
       {currentUser ? <NavLink exact to = "/newfilm">New Film</NavLink> : null}
       <div></div>
