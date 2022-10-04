@@ -2,36 +2,11 @@ import styled from "styled-components"
 
 const MapContainerStyle = styled.div`
   margin: 15px 20px 0px 20px;
-
   animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  -moz-animation: fadeIn 2s;
-  -o-animation: fadeIn 2s;
-  -ms-animation: fadeIn 2s;
 
   @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
-  }
-
-  @-moz-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
-  @-webkit-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
-  @-o-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
-  @-ms-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
   }
 
   .mapboxgl-ctrl-logo {
@@ -83,31 +58,32 @@ const MapContainerStyle = styled.div`
 `
 
 const Alert = styled.div`
-    position: absolute;
-    margin: 30px 0px 0px 40px;
-    background-color: black;
-    border-radius: 2px;
-    box-shadow: 3px 3px 3px 2px rgb(00 00 00 / 10%);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    animation: fadein 2s;
+  position: absolute;
+  margin: 30px 0px 0px 40px;
+  background-color: black;
+  border-radius: 2px;
+  box-shadow: 3px 3px 3px 2px rgb(00 00 00 / 10%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  animation: fadeIn 2s;
+  cursor: pointer;
 
-    h3 {
-      margin: 11px 15px 11px 9px;
-      font-family: "Gill Sans", sans-serif;
-      font-size: 11px;
-      font-weight: 100;
-    }
+  h3 {
+    margin: 11px 15px 11px 9px;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 100;
+  }
 
-    #icon {
-      margin-left: 15px;
-      width: 15px;
-      height: auto;
-      opacity: 80%;
-    }
+  #icon {
+    margin-left: 15px;
+    width: 15px;
+    height: auto;
+    opacity: 80%;
+  }
 
     /* &-show{
       animation: warning 400ms ease-in-out forwards;

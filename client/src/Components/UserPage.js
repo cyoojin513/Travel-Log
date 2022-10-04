@@ -28,20 +28,20 @@ function UserPage({currentUser, slideshows}) {
         <MapCard movie={releasedMovie}/>
       </MovieContainer>
       <PreReleaseContainer>
-          <h1 className='pre-release-title'>Pre-release Films</h1>
-          <CardContainer>
-            <div className='card-grid'>
-            {slideshows.map((slide) => slide.isReleased
-              ? null
-              : <PreLeaseCard
-                  key = {slide.id}
-                  id = {slide.id}
-                  city = {slide.city}
-                  country = {slide.country}
-                  date = {slide.date}
-                />
-            )}
-            </div>
+        <h1 className='pre-release-title'>🔴 Pre-release Films</h1>
+        <CardContainer>
+          <div className='card-grid'>
+          {slideshows.map((slide) => slide.isReleased
+            ? null
+            : <PreLeaseCard
+                key = {slide.id}
+                id = {slide.id}
+                city = {slide.city}
+                country = {slide.country}
+                date = {slide.date}
+              />
+          )}
+          </div>
         </CardContainer>
       </PreReleaseContainer>
     </AlertStyling>

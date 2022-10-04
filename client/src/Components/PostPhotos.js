@@ -88,16 +88,26 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
   return (
     <PostPhotoContainer>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input 
-          type='file' 
-          multiple 
-          name='image' 
-          id='image'
-          onChange={imageHandleChange}
-        />
-        <button type='submit'>Submit Film</button>
+        <div className='first-row'>
+          <h2>Select multiple photos</h2>
+            <input 
+              type='file' 
+              multiple 
+              name='image' 
+              id='image'
+              onChange={imageHandleChange}
+            />
+        </div>
+        <div className='image-container-wrapper'>
+          <div className='image-container'>
+            {renderPhotos(selectedImages)}
+          </div>
+        </div>
+        <div className='button-grid'>
+          <button className='back' onClick={() => history.push(`/editfilm/${currentSlideId}`)}>Back</button>
+          <button type='submit' className='submit'>Submit Film</button>
+        </div>
       </form>
-      {renderPhotos(selectedImages)}
     </PostPhotoContainer>
   )
 }

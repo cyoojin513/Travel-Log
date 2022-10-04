@@ -19,7 +19,7 @@ const FormContainer = styled.div`
   }
 
   input[name=address], input[name=date] {
-    background-color: #282828;
+    background-color: #191919;
     color: #BEBEBE;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 330px;
@@ -40,7 +40,7 @@ const FormContainer = styled.div`
   }
 
   textarea {
-    background-color: #282828;
+    background-color: #191919;
     color: #BEBEBE;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 715px;
