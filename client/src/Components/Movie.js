@@ -33,22 +33,19 @@ function Movie({currentUser, deleteRendered}) {
   }, [])
 
   const photoObject = slideshow.photos
-  console.log(photoObject)
 
   function photoUrls() {
       if (photoObject.length == 1) {
-        return <img src={photoObject[0].image_url} className='slideshow' alt='slide' key={0}/>
+        return <img src={photoObject[0].image_url} className='photo' alt='slide' key={0}/>
       } else if (photoObject.length == 0) {
           return <h5>Please add photos</h5> 
       } else { 
-          // return photoObject.map((i) => 
-          //   <img src={i.image_url} className='slideshow' alt='slide' key={i.index}/>
-          // )
+          return photoObject.map((i) => 
+            <img src={i.image_url} className='photo' alt='slide' key={i.index}/>
+          )
 
       }
   }
-
-  function 
 
   function renderSlideshow() {
     return photoObject ? photoUrls() : <h5>Please add photos</h5> 
@@ -75,9 +72,11 @@ function Movie({currentUser, deleteRendered}) {
     <MovieContainer>
       <div className='center-grid'>
         <div className='first-column'>
-          <h3>{slideshow.city}</h3>
-          <h5>{slideshow.country}</h5>
-          <h5>{slideshow.note}</h5>
+          <div className='city-country-container'>
+            <h1>{slideshow.city}</h1>
+            <h5 id='country'>{slideshow.country}</h5>
+          </div>
+          <h5 id='note'>{slideshow.note}</h5>
         </div>
         <div className='second-column'>
           <button onClick={() => history.push(`/editfilm/${slideshowId}`)}>Edit</button>
@@ -91,3 +90,17 @@ function Movie({currentUser, deleteRendered}) {
 }
 
 export default Movie
+
+
+// function hasDuplicates (array) {
+//   for (let a = 0; a < array.length; a++) {
+//     for (let b = 0; b < array.length; b++) {
+//       if (a == b) continue;
+//       if(array[a] == array[b]) {
+//         return true
+//       }
+//     }
+//   }
+//   return false
+// }
+

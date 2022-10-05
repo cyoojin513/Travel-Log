@@ -27,7 +27,7 @@ const Logo = styled.div`
   img {
     width: 37px;
     height: auto;
-    margin-top: -4%;
+    margin-top: -6%;
     margin-right: 3px;
     opacity: 90%;
   }

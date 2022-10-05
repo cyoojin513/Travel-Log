@@ -85,8 +85,6 @@ function MapCard({movie}) {
         map.getCanvas().style.cursor = ''
         })
     })
-
-    console.log('Map useEffect')
   }, [])
 
  return (

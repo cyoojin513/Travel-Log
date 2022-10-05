@@ -25,20 +25,21 @@ function App() {
     if (!currentUser) {
       fetch('/me').then((res) => {
         if (res.ok) {
-          res.json().then((data) => setCurrentUser(data))
+          res.json().then((data) => {
+            setCurrentUser(data)
+          })
         }
       })
     }
-  }, [])
+  }, [currentUser])
 
   useLayoutEffect(() => {
-    fetch('/slideshows')
+    fetch('/me')
     .then((res) => {
       if (res.ok) {
-        res.json().then((data) => setSlideshows(data))
+        res.json().then((data) => setSlideshows(data.slideshows))
       }
     })
-    console.log('App useLayoutEffect')
   }, [ currentUser ])
 
   function updateUser(user) {

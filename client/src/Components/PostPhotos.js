@@ -59,9 +59,9 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
     for (let i = 0; i < uploadingImages.length; i++) {
       data.append("image", e.target.image.files[i])
       data.append("slideshow_id", currentSlideId)
-      submitToAPI(data)
+      setTimeout(() => {submitToAPI(data)}, 500)
     }
-    setTimeout(() => {handleUpdate(data)}, '500')
+    setTimeout(() => {handleUpdate(data)}, 500)
   }
 
   function submitToAPI(data) {
@@ -98,7 +98,7 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
           <h2>Select multiple photos</h2>
             <input 
               type='file' 
-              multiple 
+              // multiple 
               name='image' 
               id='image'
               onChange={imageHandleChange}
