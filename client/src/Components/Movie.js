@@ -1,6 +1,8 @@
 // @ts-nocheck
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+import deleteButton from '../Images/delete.png'
+import pencilButton from '../Images/pencil.png'
 // Styling
 import { MovieContainer } from '../Styles/Movie.style'
 
@@ -43,7 +45,6 @@ function Movie({currentUser, deleteRendered}) {
           return photoObject.map((i) => 
             <img src={i.image_url} className='photo' alt='slide' key={i.index}/>
           )
-
       }
   }
 
@@ -75,15 +76,17 @@ function Movie({currentUser, deleteRendered}) {
           <div className='city-country-container'>
             <h1>{slideshow.city}</h1>
             <h5 id='country'>{slideshow.country}</h5>
+            <h5 id='note'>{slideshow.note}</h5>
           </div>
-          <h5 id='note'>{slideshow.note}</h5>
         </div>
         <div className='second-column'>
-          <button onClick={() => history.push(`/editfilm/${slideshowId}`)}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <img id='pencil' src={pencilButton} alt='pencil' onClick={() => history.push(`/editfilm/${slideshowId}`)}/>
+          <img id='delete' src={deleteButton} alt='delete' onClick={handleDelete}/>
         </div>
-        {renderSlideshow()}
-        <h5>{slideshow.date}</h5>
+        <div className='photo-container'>
+          {renderSlideshow()}
+        </div>
+        <h5 id='date'>{slideshow.date}</h5>
       </div>
     </MovieContainer>
   )

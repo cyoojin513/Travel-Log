@@ -3,5 +3,5 @@ class Slideshow < ApplicationRecord
   has_many :photos, dependent: :destroy
 
   validates :address, :date, presence: true
-  validates :note, length: { maximum: 200 }
+  validates :note, length: { maximum: 1000 }
 end

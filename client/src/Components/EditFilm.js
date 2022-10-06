@@ -82,7 +82,7 @@ function EditFilm({currentUser, updatingIsReleased, getSlideId}) {
         res.json().then(slide =>{
           updatingIsReleased(slide)
           getSlideId(slide.id)
-          history.push('/postphotos')
+          history.push(`/movie/${slideshowId}`)
         })
       } else {
         res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))

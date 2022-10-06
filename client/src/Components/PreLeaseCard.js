@@ -13,7 +13,7 @@ function PreLeaseCard({id, city, country, date, deleteRendered}) {
     const audio = new Audio(Click_2)
     audio.volume = 0.5
     audio.play()
-    history.push(`/editfilm/${id}`)
+    history.push(`/prereleased-editfilm/${id}`)
   }
 
   function handleDelete() {

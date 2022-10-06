@@ -1,12 +1,15 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import PreLeaseCard from './PreLeaseCard'
 import MapCard from './MapCard'
+import camera_icon from '../Images/camera_icon.png'
 // Styling
 import { MovieContainer, PreReleaseContainer, CardContainer, AlertStyling } from 'Styles/UserPage.style'
+import { MapContainerStyle, Alert } from 'Styles/Map.style'
 
 function UserPage({currentUser, slideshows, deleteRendered}) {
 
+  const [ isClicked, setIsClicked ] = useState(true)
   const history = useHistory()
 
   useEffect(() => {
@@ -25,7 +28,16 @@ function UserPage({currentUser, slideshows, deleteRendered}) {
     <AlertStyling>
       <MovieContainer>
         <h1 className='my-movie-title'></h1>
-        <MapCard movie={releasedMovie}/>
+        <MapContainerStyle>
+          {isClicked
+            ? <Alert onClick={() => setIsClicked(!isClicked)}>
+                <img src={camera_icon} id='icon' alt='icon'/>
+                <h3>Click New Film to create a movie</h3>
+              </Alert>
+            : null
+          }
+          <MapCard movie={releasedMovie}/>
+        </MapContainerStyle>
       </MovieContainer>
       <PreReleaseContainer>
         <h1 className='pre-release-title'>🔴 Pre-release Films</h1>

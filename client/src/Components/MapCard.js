@@ -1,15 +1,13 @@
 // @ts-nocheck
 import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
-import camera_icon from '../Images/camera_icon.png'
 // Styling
-import { MapContainerStyle, Alert } from 'Styles/Map.style'
+import { MapContainerStyle } from 'Styles/Map.style'
 
 mapboxgl.accessToken='pk.eyJ1IjoiY3lvb2ppbjUxMyIsImEiOiJjbDhvd3VtdjgwMXc2M29xbWVxOTNmMXhnIn0.lf4m7kWS3gbVN6BWe9kOBA'
 
 function MapCard({movie}) {
 
-  const [ isClicked, setIsClicked ] = useState(true)
   const mapContainer = useRef()
 
   useEffect(() => {
@@ -89,17 +87,8 @@ function MapCard({movie}) {
 
  return (
   <div>
-    {isClicked
-      ? <Alert onClick={() => setIsClicked(!isClicked)}>
-          <img src={camera_icon} id='icon' alt='icon'/>
-          <h3>Click New Film to create a movie</h3>
-        </Alert>
-      : null
-    }
-    <MapContainerStyle>
-      <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet"/>
-      <div ref={mapContainer} className='map-container' style={{width:'100%', height:'80vh'}}></div>
-    </MapContainerStyle>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet"/>
+    <div ref={mapContainer} className='map-container' style={{width:'100%', height:'80vh'}}></div>
   </div>
  )
 }

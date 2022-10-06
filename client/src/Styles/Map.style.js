@@ -5,8 +5,8 @@ const MapContainerStyle = styled.div`
   animation: fadeIn 2s;
 
   @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
 
   .mapboxgl-ctrl-logo {
@@ -84,25 +84,6 @@ const Alert = styled.div`
     height: auto;
     opacity: 80%;
   }
-
-    /* &-show{
-      animation: warning 400ms ease-in-out forwards;
-      display: flex;
-    }
-
-    @keyframes warning {
-      0%{
-        opacity: 0;
-        top: 0;
-      }
-      5%{
-        opacity: 0;
-      }
-      100%{
-        opacity: 1;
-        top: 2rem;
-      }
-    } */
 `
 
 export { MapContainerStyle, Alert }

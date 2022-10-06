@@ -10,6 +10,7 @@ import NavBar from "./Components/NavBar";
 import PostPhotos from './Components/PostPhotos';
 import Movie from 'Components/Movie';
 import EditFilm from './Components/EditFilm';
+import PrereleasedEditFilm from './Components/PrereleasedEditFilm';
 import LoginError from './Components/LoginError';
 // Styling
 import { AppContainer, SecondRow } from './Styles/App.style'
@@ -90,6 +91,13 @@ function App() {
                   getSlideId={getSlideId}  
                 />
               </Route>
+              <Route path='/prereleased-editfilm/:id'>
+                <PrereleasedEditFilm 
+                  currentUser={currentUser}
+                  updatingIsReleased={updatingIsReleased}
+                  getSlideId={getSlideId}  
+                />
+              </Route>
               <Route path='/editfilm/:id'>
                 <EditFilm 
                   currentUser={currentUser}
@@ -99,6 +107,7 @@ function App() {
               </Route>
               <Route path='/postphotos'>
                 <PostPhotos
+                  slideshows={slideshows}
                   currentSlideId={currentSlideId}
                   currentUser={currentUser}
                   updatingIsReleased={updatingIsReleased}

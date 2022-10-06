@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
-import filmlogs_logo from '../Images/filmlogs_logo.png'
+import travellog_logo_2 from '../Images/travellog_logo_2.png'
+import travellog_logo from '../Images/travellog_logo.png'
 // Styling
 import { NavContainer, Logo } from '../Styles/Nav.style'
 
@@ -20,9 +21,12 @@ function NavBar({ currentUser, updateUser }) {
 
   return (
     <NavContainer>
-      <Logo as={NavLink} exact to = {`/user/${currentUser.id}`}>
-        <img src={filmlogs_logo} alt='logo'/>
-      </Logo>
+      {currentUser 
+        ? <Logo as={NavLink} id='logo-container' exact to = {`/user/${currentUser.id}`}>
+            <img src={travellog_logo_2} alt='logo'/>
+          </Logo>
+        : <img id='login-page-logo' src={travellog_logo} alt='logo'/>
+      }
       {currentUser ? <NavLink exact to = {`/user/${currentUser.id}`}>My Page</NavLink> : null}
       {currentUser ? <NavLink exact to = "/newfilm">New Film</NavLink> : null}
       <div></div>

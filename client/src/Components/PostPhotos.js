@@ -6,7 +6,7 @@ import { Error } from '../Styles/NewFilm.style'
 // Styling
 import { PostPhotoContainer } from '../Styles/PostPhotos.style'
 
-function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
+function PostPhotos({currentSlideId, currentUser, updatingIsReleased, slideshows}) {
   
   const [ selectedImages, setSelectedImages ] = useState([])
   const [ error, setError ] = useState("")
@@ -51,6 +51,9 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
     setSelectedImages(updatedList)
   }
 
+
+  const slideshowPhotos = slideshows.filter((item) => item.id == currentSlideId)[0].photos
+
   function handleSubmit(e) {
     e.preventDefault()
     const data = new FormData()
@@ -59,7 +62,12 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
     for (let i = 0; i < uploadingImages.length; i++) {
       data.append("image", e.target.image.files[i])
       data.append("slideshow_id", currentSlideId)
+
       setTimeout(() => {submitToAPI(data)}, 500)
+      
+      // if (slideshowPhotos.length === 0) {
+      //   setTimeout(() => {submitToAPI(data)}, 500)
+      // } else {setTimeout(() => {patchToAPI(data)}, 500)}
     }
     setTimeout(() => {handleUpdate(data)}, 500)
   }
@@ -72,6 +80,13 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
       .then(res => res.json())
       .catch((error) => console.error(error))
   }
+
+  // function patchToAPI(data) {
+  //   fetch(`/photos/${slideshowPhotos.id}`, {
+  //     method: 'DELETE'
+  //   })
+  //     .then(submitToAPI(data))
+  // }
 
   function handleUpdate(data) {
     if (data) {
@@ -93,27 +108,30 @@ function PostPhotos({currentSlideId, currentUser, updatingIsReleased}) {
   return (
     <PostPhotoContainer>
       {error ? <Error><div className='error-text'>{error}</div></Error> : null}
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div className='first-row'>
-          <h2>Select multiple photos</h2>
-            <input 
-              type='file' 
-              // multiple 
-              name='image' 
-              id='image'
-              onChange={imageHandleChange}
-            />
-        </div>
-        <div className='image-container-wrapper'>
+      <div className='center-grid'>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className='first-column'>
+            <div className='first-row'>
+              <h2>Choose the most epic photo</h2>
+              <h2>from your travel</h2>
+              <input 
+                type='file' 
+                // multiple 
+                name='image' 
+                id='image'
+                onChange={imageHandleChange}
+              />
+            </div>
+          </div>
           <div className='image-container'>
             {renderPhotos(selectedImages)}
           </div>
-        </div>
-        <div className='button-grid'>
-          <button className='back' onClick={() => history.push(`/editfilm/${currentSlideId}`)}>Back</button>
-          <button type='submit' className='submit'>Submit Film</button>
-        </div>
-      </form>
+          <div className='button-grid'>
+              <button className='back' onClick={() => history.push(`/editfilm/${currentSlideId}`)}>Back</button>
+              <button type='submit' className='submit'>Submit Film</button>
+          </div>
+        </form>
+      </div>
     </PostPhotoContainer>
   )
 }

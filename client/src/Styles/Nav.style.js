@@ -2,7 +2,12 @@ import styled from "styled-components"
 
 const NavContainer = styled.div`
   display: grid;
-  grid-template-columns: 80px 80px 80px 1fr 80px;
+  grid-template-columns: 50px 80px 80px 1fr 80px;
+
+  #logo-container {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
 
   a {
     text-decoration: none;
@@ -21,14 +26,20 @@ const NavContainer = styled.div`
     color: #B9B9B9;
     cursor: pointer;
   }
+
+  #login-page-logo {
+    width: 130px;
+    height: auto;
+    margin: 10px 0px 0px 15px;
+  }
 `
 
 const Logo = styled.div`
+
   img {
-    width: 37px;
+    width: 32px;
     height: auto;
-    margin-top: -6%;
-    margin-right: 3px;
+    margin: -13% -3px 0px 0px;
     opacity: 90%;
   }
 `
