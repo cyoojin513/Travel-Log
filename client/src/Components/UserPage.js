@@ -32,7 +32,7 @@ function UserPage({currentUser, slideshows, deleteRendered}) {
           {isClicked
             ? <Alert onClick={() => setIsClicked(!isClicked)}>
                 <img src={camera_icon} id='icon' alt='icon'/>
-                <h3>Click New Film to create a movie</h3>
+                <h3>Click New Film to create a new card</h3>
               </Alert>
             : null
           }
